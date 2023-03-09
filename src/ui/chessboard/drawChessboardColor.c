@@ -1,4 +1,4 @@
-int chessboardColor() {
+void drawChessboardColor() {
 
 	int currentBoardColumn;
 	int currentBoardRow;
@@ -40,5 +40,4 @@ int chessboardColor() {
 			}
 		}
 	}
-	return 0;
 }
