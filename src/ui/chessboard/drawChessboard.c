@@ -11,12 +11,12 @@
 void drawChessboard() {
 
 	drawChessboardColor();
-	drawHorizontalLines();
-	drawVerticalLines();
+	//drawHorizontalLines();
+	//drawVerticalLines();
 	drawHorizontalBorders();
 	drawPhysicalNumberCoords();
 	drawPhysicalLetterCoords();
 	drawVerticalBorders();
-	drawEndIntersectingLines();
-	drawInnerIntersectingLines();
+	//drawEndIntersectingLines();
+	//drawInnerIntersectingLines();
 }
