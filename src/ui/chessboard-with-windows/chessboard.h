@@ -11,6 +11,7 @@
 #define WHITE_PIECE_ON_WHITE 4
 #define BLACK_PIECE_ON_BLACK 5
 #define BLACK_PIECE_ON_WHITE 6
+#define BOARD_COLOR 7
 
 // Link to more information on the following unicode symbols:
 // https://unicodeplus.com/U+2654
@@ -38,6 +39,7 @@ const char *WHITEPIECESSTART[6];
 const char *BLACKPIECESSTART[6];
 
 // Defining starting dimensions of chessboard.
+
 
 const int BOARDSTARTINGYCOORD = 10;
 const int BOARDSTARTINGXCOORD = 100;

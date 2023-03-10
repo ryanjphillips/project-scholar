@@ -21,6 +21,7 @@ int main() {
 	init_pair(WHITE_PIECE_ON_WHITE, FALSE, COLOR_WHITE);
 	init_pair(BLACK_PIECE_ON_BLACK, FALSE, COLOR_BLACK);
 	init_pair(BLACK_PIECE_ON_WHITE, FALSE, COLOR_WHITE);
+	init_color(COLOR_RED, 139,69,19);
 
 	drawChessboard();
 	drawPiece(0, 0, BLACKROOK, BLACK_PIECE_ON_WHITE);
