@@ -4,13 +4,13 @@
 #include <wchar.h>
 
 // Define black and white square variables for ncurses init_pair().
-
 #define WHITE_SQUARE 1
 #define BLACK_SQUARE 2
 #define WHITE_PIECE_ON_BLACK 3
 #define WHITE_PIECE_ON_WHITE 4
 #define BLACK_PIECE_ON_BLACK 5
 #define BLACK_PIECE_ON_WHITE 6
+#define BOARD_COLOR 7
 
 // Link to more information on the following unicode symbols:
 // https://unicodeplus.com/U+2654
@@ -32,21 +32,33 @@ const char WHITEKNIGHT[] = "\xE2\x99\x98";
 const char WHITEQUEEN[] = "\xE2\x99\x95";
 const char WHITEKING[] = "\xE2\x99\x94";
 
-// Starting Arrays of chess pieces.
-
-const char *WHITEPIECESSTART[6]; 
-const char *BLACKPIECESSTART[6];
-
 // Defining starting dimensions of chessboard.
 
-const int BOARDSTARTINGYCOORD = 10;
-const int BOARDSTARTINGXCOORD = 100;
-const int BOARDTILEWIDTH = 6;
-const int BOARDTILEHEIGHT = 3;
+// Bottom left to bottom right = length
+// Top Left to bottom left = width
+// Adding columns increases length
+// Adding row increases width
+// X axis is length
+// Y axis is width
+// Y = width = rows 
+// X = length = columns 
+
+// Hard coded length and width of each tile.
+const int BOARDTILEWIDTH = 5;
+const int BOARDTILELENGTH = 10;
+
+//Amount of columns and rows for the chessboard.
 const int BOARDCOLUMNS = 8;
 const int BOARDROWS = 8;
-const int BOARDENDINGXCOORD = BOARDSTARTINGXCOORD + BOARDCOLUMNS * BOARDTILEWIDTH;
-const int BOARDENDINGYCOORD = BOARDSTARTINGYCOORD + BOARDROWS * BOARDTILEHEIGHT;
+
+// Calculation of the board length.
+const int BOARDLENGTH = BOARDTILELENGTH * BOARDCOLUMNS;
+const int BOARDWIDTH = BOARDTILEWIDTH * BOARDROWS; 
+
+// Ending coords for the board.
+// const int BOARDENDINGXCOORD = BOARDSTARTINGXCOORD + BOARDLENGTH;
+// const int BOARDENDINGYCOORD = BOARDSTARTINGYCOORD + BOARDWIDTH;
+
 
 // Defining "physical" numbers and coordinates for the chess board.
 
