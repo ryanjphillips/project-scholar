@@ -7,10 +7,12 @@
 #define WHITE_SQUARE 1
 #define BLACK_SQUARE 2
 #define WHITE_PIECE_ON_BLACK 3
-#define WHITE_PIECE_ON_WHITE 4
+#define WHITE_PIECE_ON_WHITE 4 
 #define BLACK_PIECE_ON_BLACK 5
 #define BLACK_PIECE_ON_WHITE 6
 #define BOARD_COLOR 7
+#define TEXT_COLOR 8
+
 
 // Link to more information on the following unicode symbols:
 // https://unicodeplus.com/U+2654
@@ -44,8 +46,8 @@ const char WHITEKING[] = "\xE2\x99\x94";
 // X = length = columns 
 
 // Hard coded length and width of each tile.
-const int BOARDTILEWIDTH = 5;
-const int BOARDTILELENGTH = 10;
+const int BOARDTILEWIDTH = 7;
+const int BOARDTILELENGTH = 14;
 
 //Amount of columns and rows for the chessboard.
 const int BOARDCOLUMNS = 8;

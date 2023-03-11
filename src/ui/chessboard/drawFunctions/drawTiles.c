@@ -1,7 +1,5 @@
 #include "../boardUtils/determineWindowBackgroundColor.c"
-void drawTiles() {
-	WINDOW *chessBoard[64];
-	const int MIDDLEOFSCREENROWS = LINES / 2;
+void drawTiles(WINDOW **chessBoard) { const int MIDDLEOFSCREENROWS = LINES / 2;
 	const int MIDDLEOFSCREENCOLUMNS = COLS / 2;
 	int boardRow;
 	int boardColumn;
@@ -19,11 +17,8 @@ void drawTiles() {
 		  int xPos = MIDDLEOFSCREENCOLUMNS - (BOARDLENGTH) / 2  + (boardColumn * BOARDTILELENGTH);	
 
 			chessBoard[tileCounter] = createWindow(BOARDTILEWIDTH, BOARDTILELENGTH, yPos, xPos);
-
 			wbkgd(chessBoard[tileCounter], COLOR_PAIR(backgroundColorPair));
-		  wrefresh(chessBoard[tileCounter]);
 			tileCounter = tileCounter + 1;
 		}
 	}
-
 }
