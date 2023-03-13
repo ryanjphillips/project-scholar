@@ -1,21 +1,4 @@
-#define _X_OPEN_SOURCE_EXTENDED
-#include <ncurses.h>
-#include <locale.h>
-#include <wchar.h>
-#include <string.h>
 #include <assert.h>
-
-// Define black and white square variables for ncurses init_pair().
-#define WHITE_SQUARE 1
-#define BLACK_SQUARE 2
-#define WHITE_PIECE_ON_BLACK 3
-#define WHITE_PIECE_ON_WHITE 4 
-#define BLACK_PIECE_ON_BLACK 5
-#define BLACK_PIECE_ON_WHITE 6
-#define BOARD_COLOR 7
-#define TEXT_COLOR 8
-#define TILE_SELECTED 9
-
 
 // Link to more information on the following unicode symbols:
 // https://unicodeplus.com/U+2654
@@ -64,11 +47,6 @@ const int BOARDROWS = 8;
 // Calculation of the board length.
 const int BOARDLENGTH = BOARDTILELENGTH * BOARDCOLUMNS;
 const int BOARDWIDTH = BOARDTILEWIDTH * BOARDROWS; 
-
-// Ending coords for the board.
-// const int BOARDENDINGXCOORD = BOARDSTARTINGXCOORD + BOARDLENGTH;
-// const int BOARDENDINGYCOORD = BOARDSTARTINGYCOORD + BOARDWIDTH;
-
 
 // Defining "physical" numbers and coordinates for the chess board.
 

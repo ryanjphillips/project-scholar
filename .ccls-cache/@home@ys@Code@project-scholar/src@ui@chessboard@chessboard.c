@@ -1,45 +1,17 @@
 #include "chessboard.h"
 #include "drawChessboard.c"
 
-int main() {
+int chessboard() {
 	int ch;
 	MEVENT event;
-	setlocale(LC_ALL, "");
-	initscr();
-	cbreak();
-	clear();
-  raw();
-  keypad(stdscr, TRUE);
-	noecho();
-	clear();
-  cbreak();
-
 	int windowBeginningY, windowBeginningX;
 	int windowEndingY, windowEndingX;
 
 	start_color();
-	use_default_colors();
-	init_pair(BLACK_SQUARE, FALSE, COLOR_CYAN);
-	init_pair(WHITE_SQUARE, FALSE, COLOR_WHITE); 
-	init_pair(WHITE_PIECE_ON_BLACK, FALSE, COLOR_BLACK);
-	init_pair(WHITE_PIECE_ON_WHITE, FALSE, COLOR_WHITE);
-	init_pair(BLACK_PIECE_ON_BLACK, FALSE, COLOR_BLACK);
-	init_pair(BLACK_PIECE_ON_WHITE, FALSE, COLOR_WHITE);
-	init_pair(BOARD_COLOR, COLOR_RED, COLOR_RED);
-	init_pair(TEXT_COLOR, COLOR_BLACK, COLOR_BLACK);
-	init_pair(TILE_SELECTED, FALSE, COLOR_RED);
 	refresh();
 
 	WINDOW * chessBoard[64] = {0};
 	drawTiles(chessBoard);
-	strcpy(BOARDPOS[0], "a1"); 
-	strcpy(BOARDPOS[0], "a2"); 
-	strcpy(BOARDPOS[0], "a3"); 
-	strcpy(BOARDPOS[0], "a4"); 
-	strcpy(BOARDPOS[0], "a5"); 
-	strcpy(BOARDPOS[0], "a6"); 
-	strcpy(BOARDPOS[0], "a7"); 
-	strcpy(BOARDPOS[0], "a8"); 
 	
 	for (int i = 0; i <= 63; i++) {
 
@@ -78,7 +50,6 @@ int main() {
     refresh();
   }
 
-	endwin();
 	return 0;
 }
 

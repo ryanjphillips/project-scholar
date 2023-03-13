@@ -3,8 +3,7 @@
 #include "./drawFunctions/drawPhysicalLetterCoords.c"
 #include "./drawFunctions/drawPhysicalNumberCoords.c"
 
-WINDOW * drawChessboard() {
-	
+void drawChessboard() {
 
 	// drawPhysicalBoard();
 	WINDOW * chessBoard[64] = {0};

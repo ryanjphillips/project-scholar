@@ -1,0 +1,5 @@
+int gameStart(WINDOW *chessboard) {
+
+
+
+}
