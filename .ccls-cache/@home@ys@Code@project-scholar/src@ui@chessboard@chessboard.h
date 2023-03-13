@@ -2,6 +2,8 @@
 #include <ncurses.h>
 #include <locale.h>
 #include <wchar.h>
+#include <string.h>
+#include <assert.h>
 
 // Define black and white square variables for ncurses init_pair().
 #define WHITE_SQUARE 1
@@ -12,6 +14,7 @@
 #define BLACK_PIECE_ON_WHITE 6
 #define BOARD_COLOR 7
 #define TEXT_COLOR 8
+#define TILE_SELECTED 9
 
 
 // Link to more information on the following unicode symbols:
@@ -34,6 +37,11 @@ const char WHITEKNIGHT[] = "\xE2\x99\x98";
 const char WHITEQUEEN[] = "\xE2\x99\x95";
 const char WHITEKING[] = "\xE2\x99\x94";
 
+
+// Board Positions
+
+char BOARDPOS[64][10] = {0};
+
 // Defining starting dimensions of chessboard.
 
 // Bottom left to bottom right = length
@@ -46,8 +54,8 @@ const char WHITEKING[] = "\xE2\x99\x94";
 // X = length = columns 
 
 // Hard coded length and width of each tile.
-const int BOARDTILEWIDTH = 7;
-const int BOARDTILELENGTH = 14;
+const int BOARDTILEWIDTH = 4;
+const int BOARDTILELENGTH = 8;
 
 //Amount of columns and rows for the chessboard.
 const int BOARDCOLUMNS = 8;

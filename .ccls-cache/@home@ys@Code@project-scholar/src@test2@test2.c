@@ -33,3 +33,15 @@ int main() {
   }
   endwin();
 }
+			//	if ((cursorY >= windowBeginningY && cursorY < windowEndingY + windowBeginningY) && (cursorX >= windowBeginningX && cursorX < windowEndingX + windowBeginningX))  { 
+		  
+			//		wbkgd(chessBoard[0], COLOR_PAIR(TILE_SELECTED));
+			//	  wrefresh(chessBoard[0]);
+			//	}
+			// getbegyx(chessBoard[0], windowBeginningY, windowBeginningX);
+			// getmaxyx(chessBoard[0], windowEndingY, windowEndingX);
+			// getyx(stdscr, cursorY, cursorX);
+			// printw("CURSOR Y: %d, CURSOR X: %d  ", cursorY, cursorX);
+			// printw("WIDOW Y: %d, WINDOW X: %d  ", windowBeginningY, windowBeginningX);
+			// printw("WIDOW Ending Y: %d, WINDOW Ending X: %d  ", windowBeginningY + windowEndingY, windowBeginningX + windowEndingX);
+			

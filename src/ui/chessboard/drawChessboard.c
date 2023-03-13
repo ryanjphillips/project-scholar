@@ -3,7 +3,7 @@
 #include "./drawFunctions/drawPhysicalLetterCoords.c"
 #include "./drawFunctions/drawPhysicalNumberCoords.c"
 
-void drawChessboard() {
+WINDOW * drawChessboard() {
 	
 
 	// drawPhysicalBoard();
@@ -13,6 +13,7 @@ void drawChessboard() {
 	for (int i = 0; i <= 63; i++) {
 
 		attron(COLOR_PAIR(TEXT_COLOR));
+		mvwaddstr(chessBoard[i], 0 , 0, BLACKPAWN);
 		wrefresh(chessBoard[i]);
     attroff(COLOR_PAIR(TEXT_COLOR));
 	}
