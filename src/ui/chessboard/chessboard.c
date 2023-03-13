@@ -7,9 +7,6 @@ int chessboard() {
 	int windowBeginningY, windowBeginningX;
 	int windowEndingY, windowEndingX;
 
-	start_color();
-	refresh();
-
 	WINDOW * chessBoard[64] = {0};
 	drawTiles(chessBoard);
 	

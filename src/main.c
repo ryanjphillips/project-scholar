@@ -10,7 +10,10 @@ int main() {
 	noecho();
 	clear();
   cbreak();
-	mainMenu();
+	start_color();
+	refresh();
+	initColors();
+	//mainMenu();
 	chessboard();
 	endwin();
 	return 0;
