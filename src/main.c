@@ -7,14 +7,18 @@ int main() {
 	clear();
   raw();
   keypad(stdscr, TRUE);
+  mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
 	noecho();
 	clear();
   cbreak();
+
+	WINDOW * chessBoard[64] = {0};
+
 	start_color();
 	refresh();
 	initColors();
-	//mainMenu();
-	chessboard();
+	drawChessboard(chessBoard);
+	getch();
 	endwin();
 	return 0;
 }

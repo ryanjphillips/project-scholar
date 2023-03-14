@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 // Non-library file imports.
-#include "./ui/chessboard/chessboard.c"
+#include "./ui/chessboard/drawChessboard.c"
 #include "./ui/menus/main-menu/mainMenu.c"
 #include "./ui/colors/initColors.c"
 

@@ -1,19 +1,17 @@
+#include "chessboard.h"
 #include "./boardUtils/createWindow.c"
 #include "./drawFunctions/drawTiles.c"
-#include "./drawFunctions/drawPhysicalLetterCoords.c"
-#include "./drawFunctions/drawPhysicalNumberCoords.c"
 
-void drawChessboard() {
+int drawChessboard(WINDOW **chessBoard) {
 
-	// drawPhysicalBoard();
-	WINDOW * chessBoard[64] = {0};
 	drawTiles(chessBoard);
 	
 	for (int i = 0; i <= 63; i++) {
 
 		attron(COLOR_PAIR(TEXT_COLOR));
-		mvwaddstr(chessBoard[i], 0 , 0, BLACKPAWN);
 		wrefresh(chessBoard[i]);
     attroff(COLOR_PAIR(TEXT_COLOR));
 	}
+
+	return 0;
 }
