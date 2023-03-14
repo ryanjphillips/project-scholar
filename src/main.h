@@ -4,6 +4,7 @@
 #include <wchar.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Non-library file imports.
 #include "./ui/chessboard/drawChessboard.c"
@@ -21,3 +22,5 @@
 #define BOARD_COLOR 7
 #define TEXT_COLOR 8
 #define TILE_SELECTED 9
+
+// Function Defintions 

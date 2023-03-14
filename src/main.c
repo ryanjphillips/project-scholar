@@ -12,7 +12,7 @@ int main() {
 	clear();
   cbreak();
 
-	WINDOW * chessBoard[64] = {0};
+	struct BoardTile chessBoard[64];
 
 	start_color();
 	refresh();

@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdbool.h>
 
 // Link to more information on the following unicode symbols:
 // https://unicodeplus.com/U+2654
