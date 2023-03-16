@@ -5,14 +5,16 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <assert.h>
 
 // Non-library file imports.
 #include "./ui/chessboard/drawChessboard.c"
 #include "./ui/menus/main-menu/mainMenu.c"
 #include "./ui/colors/initColors.c"
+#include "./engine/board/gameStart.c"
+#include "./engine/board/determineSelectedTile.c"
 
 // Color Definitions
-
 #define WHITE_SQUARE 1
 #define BLACK_SQUARE 2
 #define WHITE_PIECE_ON_BLACK 3
@@ -22,5 +24,3 @@
 #define BOARD_COLOR 7
 #define TEXT_COLOR 8
 #define TILE_SELECTED 9
-
-// Function Defintions 

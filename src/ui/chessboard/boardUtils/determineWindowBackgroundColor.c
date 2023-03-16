@@ -1,4 +1,4 @@
-int determineWindowBackgroundColor(int column, int row) {
+int determineWindowBackgroundColor(int row, int column) {
 	int boardCheckeredColor;
 	if ( row % 2 == 0) {
 		if (column % 2 != 0) {

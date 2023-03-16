@@ -1,26 +1,6 @@
 #include <assert.h>
 #include <stdbool.h>
 
-// Link to more information on the following unicode symbols:
-// https://unicodeplus.com/U+2654
-// Declaring and Initializing black chess piece unicode, UTF-8 encoding.
-
-const char BLACKPAWN[] = "\xE2\x99\x9F";
-const char BLACKROOK[] = "\xE2\x99\x9C";
-const char BLACKBISHOP[] = "\xE2\x99\x9D";
-const char BLACKKNIGHT[] = "\xE2\x99\x9E";
-const char BLACKQUEEN[] = "\xE2\x99\x9B";
-const char BLACKKING[] = "\xE2\x99\x9A";
-
-// Declaring and Initializing white chess piece unicode, UTF-8 encoding.
-
-const char WHITEPAWN[] = "\xE2\x99\x99";
-const char WHITEROOK[] = "\xE2\x99\x96";
-const char WHITEBISHOP[] = "\xE2\x99\x97";
-const char WHITEKNIGHT[] = "\xE2\x99\x98";
-const char WHITEQUEEN[] = "\xE2\x99\x95";
-const char WHITEKING[] = "\xE2\x99\x94";
-
 #define WHITE_SQUARE 1
 #define BLACK_SQUARE 2
 #define WHITE_PIECE_ON_BLACK 3
@@ -47,8 +27,8 @@ char BOARDPOS[64][10] = {0};
 // X = length = columns 
 
 // Hard coded length and width of each tile.
-const int BOARDTILEWIDTH = 4;
-const int BOARDTILELENGTH = 8;
+const int BOARDTILEWIDTH = 6;
+const int BOARDTILELENGTH = 12;
 
 //Amount of columns and rows for the chessboard.
 const int BOARDCOLUMNS = 8;

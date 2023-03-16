@@ -1,6 +1,7 @@
 #include "drawChessboard.h"
 #include "./boardUtils/createTile.c"
 #include "./drawFunctions/drawTiles.c"
+#include "./drawFunctions/drawPieces.c"
 
 int drawChessboard(struct BoardTile *chessBoard) {
 

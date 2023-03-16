@@ -1,11 +1,8 @@
-#include "../chessboard.h"
-void drawPieces(WINDOW *chessboardTile, char piece, int backGroundColor) {
+void drawPieces(struct BoardTile chessBoardTile, const char* piece) {
 
 	int pieceBackgroundColor;
-	const int windowRowMiddle = chessboardTile / LINES;
-	const int windowColumsMiddle = chessboardTile / COLS;
 
-	if (backGroundColor == WHITE_SQUARE) {
+	if (chessBoardTile.tileBackgroundColor == WHITE_SQUARE) {
 
 		pieceBackgroundColor = BLACK_SQUARE;
 	} else {
@@ -13,6 +10,11 @@ void drawPieces(WINDOW *chessboardTile, char piece, int backGroundColor) {
 		pieceBackgroundColor = WHITE_SQUARE;
 	}
 	
-	mvwaddstr(chessboardTile, windowRowMiddle, windowColumsMiddle);
-	wrefresh(chessboardTile);
+	chessBoardTile.tileBackgroundColor = pieceBackgroundColor;
+	chessBoardTile.tileIsEmpty = false;
+	strcpy(chessBoardTile.tileHasPiece, piece);
+	attron(COLOR_PAIR(pieceBackgroundColor));
+	mvwaddstr(chessBoardTile.tileWindow, chessBoardTile.tileMiddleY, chessBoardTile.tileMiddleX, piece);
+	attroff(COLOR_PAIR(pieceBackgroundColor));
+	wrefresh(chessBoardTile.tileWindow);
 }
