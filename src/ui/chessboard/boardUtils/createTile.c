@@ -1,7 +1,7 @@
 typedef struct BoardTile {
 	WINDOW * tileWindow;
 	int tileBackgroundColor;
-	int tilePosition;
+	int tilePosition; 
 	int tileBeginningY;
 	int tileBeginningX;
 	int tileEndingX;
@@ -9,14 +9,13 @@ typedef struct BoardTile {
 	int tileMiddleX;
 	int tileMiddleY;
 	_Bool tileIsEmpty;
-
-	char tileHasPiece[]; 
+	char tilePieceName[32];
+	char tileNotation[32];
 
 } BoardTile;
 
 struct BoardTile createWindow(int length, int width, int starty, int startx) {	
-
-  struct BoardTile currentTile;
+struct BoardTile currentTile;
 	int windowBeginningY;
 	int windowBeginningX;
 	int windowEndingY;
@@ -40,8 +39,8 @@ struct BoardTile createWindow(int length, int width, int starty, int startx) {
 	currentTile.tileWindow = newWindow;
 	currentTile.tileBackgroundColor = 0;
 	currentTile.tileIsEmpty = true;
-	strcpy(currentTile.tileHasPiece, "Empty");
+	strcpy(currentTile.tilePieceName, "None");
+	strcpy(currentTile.tileNotation, "None");
 	
-
 	return currentTile;
 }

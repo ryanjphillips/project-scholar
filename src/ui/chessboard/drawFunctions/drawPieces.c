@@ -1,8 +1,8 @@
-void drawPieces(struct BoardTile chessBoardTile, const char* piece) {
+void drawPieces(struct BoardTile *chessBoardTile, const char* piece, char *pieceName) {
 
 	int pieceBackgroundColor;
 
-	if (chessBoardTile.tileBackgroundColor == WHITE_SQUARE) {
+	if (chessBoardTile->tileBackgroundColor == WHITE_SQUARE) {
 
 		pieceBackgroundColor = BLACK_SQUARE;
 	} else {
@@ -10,11 +10,11 @@ void drawPieces(struct BoardTile chessBoardTile, const char* piece) {
 		pieceBackgroundColor = WHITE_SQUARE;
 	}
 	
-	chessBoardTile.tileBackgroundColor = pieceBackgroundColor;
-	chessBoardTile.tileIsEmpty = false;
-	strcpy(chessBoardTile.tileHasPiece, piece);
+	chessBoardTile->tileBackgroundColor = pieceBackgroundColor;
+	chessBoardTile->tileIsEmpty = false;
+	strncpy(chessBoardTile->tilePieceName, pieceName, 32);
 	attron(COLOR_PAIR(pieceBackgroundColor));
-	mvwaddstr(chessBoardTile.tileWindow, chessBoardTile.tileMiddleY, chessBoardTile.tileMiddleX, piece);
+	mvwaddstr(chessBoardTile->tileWindow, chessBoardTile->tileMiddleY, chessBoardTile->tileMiddleX, piece);
 	attroff(COLOR_PAIR(pieceBackgroundColor));
-	wrefresh(chessBoardTile.tileWindow);
+	wrefresh(chessBoardTile->tileWindow);
 }
