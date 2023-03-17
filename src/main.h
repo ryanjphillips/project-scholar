@@ -25,3 +25,12 @@
 #define BOARD_COLOR 7
 #define TEXT_COLOR 8
 #define TILE_SELECTED 9
+
+// Bottom left to bottom right = length
+// Top Left to bottom left = width
+// Adding columns increases length
+// Adding row increases width
+// X axis is length
+// Y axis is width
+// Y = width = rows 
+// X = length = columns 

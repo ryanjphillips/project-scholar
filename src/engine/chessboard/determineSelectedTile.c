@@ -2,6 +2,9 @@ int determineSelectedTile(struct BoardTile *chessBoard, int mouseYCoord, int mou
 
 	const int BOARDSIZE = 64;
 	int tileCounter;
+	int standardScreenMiddleX;
+	int standardScreenMiddleY;
+	int standardScreenMax;
 
 	for (tileCounter = 0; tileCounter < BOARDSIZE; tileCounter++) {
 
