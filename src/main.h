@@ -8,8 +8,13 @@
 #include <assert.h>
 #include <stdio.h>
 
+// Struct Definitions
+#include "./structs/dimensions/Dimensions.h"
+#include "./structs/tile/Tile.h"
+#include "./structs/chessboard/Chessboard.h"
+#include "./structs/piece/Piece.h"
+
 // Non-library file imports.
-#include "./ui/chessboard/drawChessboard.c"
 #include "./ui/menus/main-menu/mainMenu.c"
 #include "./ui/colors/initColors.c"
 #include "./engine/board/gameStart.c"

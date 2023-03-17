@@ -1,5 +1,0 @@
-void test(){
-
-	printw("Test!!!");
-
-}

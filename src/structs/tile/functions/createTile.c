@@ -7,14 +7,6 @@ struct BoardTile createWindow(int length, int width, int starty, int startx) {
 	int windowEndingY;
 	int windowEndingX;
 
-	// Editing Window Styles
-	WINDOW *newWindow;
-	newWindow = newwin(length, width, starty , startx );
-	box(newWindow, ' ' , ' ');
-	wborder(newWindow, ' ', ' ', ' ',' ',' ',' ',' ',' ');
-	getbegyx(newWindow, windowBeginningY, windowBeginningX);
-	getmaxyx(newWindow, windowEndingY, windowEndingX);
-	
 	currentTile.tileBeginningY = windowBeginningY;
 	currentTile.tileBeginningX = windowBeginningX;
 	currentTile.tileEndingY = windowBeginningY + windowEndingY;

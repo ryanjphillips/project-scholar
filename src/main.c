@@ -5,6 +5,8 @@ int main() {
 	int selectedTile;
 	int previousBackground; 
 	int count;
+	int tileLength;
+	int tileWidth;
 	MEVENT event;
 	setlocale(LC_ALL, "");
 	initscr();
