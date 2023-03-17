@@ -10,7 +10,6 @@ void drawPieces(struct BoardTile *chessBoardTile, const char* piece, char *piece
 		pieceBackgroundColor = WHITE_SQUARE;
 	}
 	
-	chessBoardTile->tileBackgroundColor = pieceBackgroundColor;
 	chessBoardTile->tileIsEmpty = false;
 	strncpy(chessBoardTile->tilePieceName, pieceName, 32);
 	attron(COLOR_PAIR(pieceBackgroundColor));
