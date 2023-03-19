@@ -4,4 +4,5 @@ typedef struct Piece {
 	int position;
 	int piecePoints;
 	int blackOrWhite;
+	char *notation;
 } Piece;

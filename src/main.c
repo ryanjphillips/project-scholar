@@ -1,7 +1,6 @@
 #include "main.h"
 
 int main() {
-
 	// Variables 
 	int ch;
 	int selectedTile;
@@ -53,9 +52,14 @@ int main() {
 					mvaddstr(0,0, "Location:");
 					mvaddstr(1, 0, boardTiles[selectedTile].notation);
 					mvaddstr(2,0, "Piece at Location:");
+					move(5,0);
+					clrtoeol();
 
+					determinePieceSelection(boardTiles[selectedTile].pPiece);
 					if (boardTiles[selectedTile].isEmpty == false) {
 					  mvaddstr(3, 0, boardTiles[selectedTile].pPiece->name);
+						mvaddstr(4,0, "Piece Notation:");
+						mvaddstr(5,0,boardTiles[selectedTile].pPiece->notation);
 					} else {
 						mvaddstr(3, 0, "none");
 					}

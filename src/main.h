@@ -26,6 +26,7 @@
 #include "./engine/chessboard/determineSelectedTile.c"
 #include "./engine/chessboard/refreshWindowArray.c"
 #include "./engine/chessboard/addPieceToTile.c"
+#include "./engine/chessboard/determinePieceSelection.c"
 
 
 // Color Definitions
