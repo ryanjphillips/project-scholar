@@ -1,32 +1,38 @@
 #include "tile.h"
-void tile(Tile *pTile[tileCounter][64], const Dimensions *pDimensions) {
+void tile(struct Tile *pTile , struct Dimensions *pDimensions) {
 	int row;
 	int column;
 	int tileCounter = 0;
 	int tileYPos;
 	int tileXPos;
-	int posCounter = 8;
+	int positionCounter = 8;
+	char notationChar[20];
 
-	for (row = 0; row < pDimensions.boardRows; row++) {
-		for (column = 0; column < pDimensions.boardColumns; column++) {
+	for (row = 0; row < pDimensions->rows ; row++) {
+		for (column = 0; column < pDimensions->columns; column++) {
 
-			tileYPos = pDimensions.startingY + (row * pDimensions.tileWidth); 
-			tileXPos = pDimensions.startingX + (column * pDimensions.tileLength); 
-			pTile[tileCounter].pWindow = createTileWindow(pDimensions.tileLength, pDimensions.tileWidth, tileYPos, tileXPos);
+			// Calculating the starting X and Y Pos for each tile. This is based off the middle of the current window. 
+			
+			tileYPos = (pDimensions->standardMaxScreenY / 2) - (pDimensions->boardWidth / 2) + (pDimensions->tileWidth * row);  
+			tileXPos = (pDimensions->standardMaxScreenX / 2) - (pDimensions->boardLength / 2) + (pDimensions->tileLength * column); 
+
+			// Create Window takes in HEIGHT and Length, which height will equal width, in my case.
+			pTile[tileCounter].pWindow = createTileWindow(pDimensions->tileWidth, pDimensions->tileLength, tileYPos, tileXPos);
 			pTile[tileCounter].backgroundColor = setTileColor(row, column); 
 			pTile[tileCounter].beginningY = tileYPos;
 			pTile[tileCounter].beginningX = tileXPos;
-			pTile[tileCounter].endingY = tileYPos + pDimensions.tileWidth;
-			pTile[tileCounter].endingX = tileXPos + pDimensions.tileColumns;
-			pTile[tileCounter].middleY = tileYPos + pDimensions.tileWidth / 2;
-			pTile[tileCounter].middleX = tileYPos + pDimensions.tileLength / 2;
-			_Bool isEmpty;
+			pTile[tileCounter].endingY = tileYPos + pDimensions->tileWidth;
+			pTile[tileCounter].endingX = tileXPos + pDimensions->tileLength;
+			pTile[tileCounter].middleY = tileYPos + pDimensions->tileWidth / 2;
+			pTile[tileCounter].middleX = tileYPos + pDimensions->tileLength / 2;
+			pTile[tileCounter].isEmpty = true;
 			strcpy(pTile[tileCounter].pieceName, "None");
-			strcpy(pTile[tileCounter].notation, getNotation(column, row, posCounter));
-
+			getNotation(column, positionCounter, notationChar);
+			strcpy(pTile[tileCounter].notation, notationChar);
+		
 			tileCounter += 1;
 		}
 
-		posCounter -= 1;
+		positionCounter -= 1;
 	}
 }

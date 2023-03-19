@@ -1,3 +1,4 @@
+#include "./initColors.h"
 void initColors() {
 
 	use_default_colors();

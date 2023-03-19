@@ -1,5 +1,5 @@
 typedef struct Chessboard {
-	BoardTile tiles[64];
+	Tile tiles[64];
 	WINDOW *physicalBoard; 
 	int innerBoardEndingY; 
 	int innerBoardEndingX;
@@ -13,12 +13,12 @@ typedef struct Chessboard {
 	int outerBoardBeginningX;
 	int outerBoardCenterY;
 	int outerBoardCenterX;
-	int boardColums;
+	int boardColumns;
 	int boardRows;
 	int boardLength;
 	int boardWidth;
-  const char PHYSICALCORDNUMBERS[8] = {'1', '2', '3', '4', '5', '6', '7', '8'};
-  const char PHYSICALCORDLETTERS[8] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}; 
+  char physicalCordNumbers[9];
+  char physicalCordLetters[9];  
 
 } Chessboard;
 

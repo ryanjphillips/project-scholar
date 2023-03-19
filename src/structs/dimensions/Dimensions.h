@@ -1,8 +1,10 @@
 typedef struct Dimensions {
-	int startingY;
-	int startingX;
+	int standardMaxScreenY;
+	int standardMaxScreenX;
 	int tileWidth;
 	int tileLength;
+	int boardWidth;
+	int boardLength;
 	int rows;
 	int columns;
 

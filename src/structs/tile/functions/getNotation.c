@@ -1,19 +1,17 @@
 #include <string.h>
 #include <ctype.h>
 
-char getNotation(int column, int row, int posCounter) {
+void getNotation(int column, int posCounter, char *pPosition) {
 	
-	int position[20];
-	int numbToString[20];
-	memset(position, 0, sizeof(position));
+	char numbToString[20];
+	memset(pPosition, 0, sizeof(pPosition));
 	memset(numbToString, 0, sizeof(numbToString));
 
 	if (column < 27) {
-	  const char ALPHA[] = "abcdefghijklmnopqrstuvwxwyz";
-		position = ALPHA[posCounter];
-	} 
+	  char alpha[] = "abcdefghijklmnopqrstuvwxwyz";
+		*pPosition = alpha[column];
 
-	sprintf(numbToString, "%d", posCounter);
-	strcat(position, numbToString);
-	return position;
+	  sprintf(numbToString, "%d", posCounter);
+	  strcat(pPosition, numbToString);
+ }
 }

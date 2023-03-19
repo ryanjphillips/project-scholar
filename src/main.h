@@ -14,11 +14,17 @@
 #include "./structs/chessboard/Chessboard.h"
 #include "./structs/piece/Piece.h"
 
+// Stuct Body
+#include "./structs/dimensions/dimensions.c"
+#include "./structs/tile/tile.c"
+#include "./structs/chessboard/chessboard.c"
+#include "./structs/piece/piece.c"
+
 // Non-library file imports.
 #include "./ui/menus/main-menu/mainMenu.c"
 #include "./ui/colors/initColors.c"
-#include "./engine/board/gameStart.c"
-#include "./engine/board/determineSelectedTile.c"
+//#include "./engine/chessboard/determineSelectedTile.c"
+#include "./engine/chessboard/refreshWindowArray.c"
 
 // Color Definitions
 #define WHITE_SQUARE 1
