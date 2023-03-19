@@ -1,7 +1,7 @@
 int determinePieceColors(int backGroundColor) {
 	int pieceBackGroundColor;
 
-	if (backGroundColor == WHITE_SQURE) {
+	if (backGroundColor == WHITE_SQUARE) {
 		return WHITE_SQUARE;
 
 	} else {

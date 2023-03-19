@@ -23,8 +23,10 @@
 // Non-library file imports.
 #include "./ui/menus/main-menu/mainMenu.c"
 #include "./ui/colors/initColors.c"
-//#include "./engine/chessboard/determineSelectedTile.c"
+#include "./engine/chessboard/determineSelectedTile.c"
 #include "./engine/chessboard/refreshWindowArray.c"
+#include "./engine/chessboard/addPieceToTile.c"
+
 
 // Color Definitions
 #define WHITE_SQUARE 1

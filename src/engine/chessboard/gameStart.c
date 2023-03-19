@@ -1,5 +1,5 @@
 #include "./gameStart.h"
-void iniStartingBoard(struct BoardTile *chessBoard) {
+void startingBoard(struct BoardTile *chessBoard) {
 	int counter; 
 
 	// Black Pieces

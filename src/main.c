@@ -7,8 +7,6 @@ int main() {
 	int selectedTile;
 	int previousBackground; 
 	int count;
-	int tileLength;
-	int tileWidth;
 	MEVENT event;
 
 	// Ncurses setup 
@@ -31,10 +29,43 @@ int main() {
 	struct Piece boardPieces[32];
 	struct Chessboard chessBoard;
 
+	// Starting Board
 	dimensions(&boardDimensions);
 	tile(boardTiles, &boardDimensions);
 	refreshWindowArray(boardTiles);
+	piece(boardPieces);
 	chessboard(&chessBoard, boardTiles);
+	addPieceToTile(boardTiles, boardPieces, 32);
+
+  while ((ch = getch()) != 'q')
+  {
+    if (ch == KEY_MOUSE)
+    {
+			wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(boardTiles[selectedTile].backgroundColor)); 
+			wrefresh(boardTiles[selectedTile].pWindow);
+      assert(getmouse(&event) == OK);
+
+			  selectedTile = determineSelectedTile(boardTiles, event.y, event.x);
+
+				if (selectedTile != -1) {
+					move(3,0);
+					clrtoeol();
+					mvaddstr(0,0, "Location:");
+					mvaddstr(1, 0, boardTiles[selectedTile].notation);
+					mvaddstr(2,0, "Piece at Location:");
+
+					if (boardTiles[selectedTile].isEmpty == false) {
+					  mvaddstr(3, 0, boardTiles[selectedTile].pPiece->name);
+					} else {
+						mvaddstr(3, 0, "none");
+					}
+
+		  	  wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
+		  	  wrefresh(boardTiles[selectedTile].pWindow);
+				}
+		}
+		count++;
+  }
 
 	getch();
 	endwin();

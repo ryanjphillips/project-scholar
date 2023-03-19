@@ -1,4 +1,4 @@
-int determineSelectedTile(struct BoardTile *chessBoard, int mouseYCoord, int mouseXCoord) {
+int determineSelectedTile(struct Tile *pTile, int mouseYCoord, int mouseXCoord) {
 
 	const int BOARDSIZE = 64;
 	int tileCounter;
@@ -8,7 +8,7 @@ int determineSelectedTile(struct BoardTile *chessBoard, int mouseYCoord, int mou
 
 	for (tileCounter = 0; tileCounter < BOARDSIZE; tileCounter++) {
 
-		if ((mouseYCoord >= chessBoard[tileCounter].tileBeginningY && mouseYCoord < chessBoard[tileCounter].tileEndingY) && mouseXCoord >= chessBoard[tileCounter].tileBeginningX && mouseXCoord < chessBoard[tileCounter].tileEndingX) {
+		if ((mouseYCoord >= pTile[tileCounter].beginningY && mouseYCoord < pTile[tileCounter].endingY) && mouseXCoord >= pTile[tileCounter].beginningX && mouseXCoord < pTile[tileCounter].endingX) {
 
 			return tileCounter;
 		} 

@@ -23,10 +23,9 @@ void tile(struct Tile *pTile , struct Dimensions *pDimensions) {
 			pTile[tileCounter].beginningX = tileXPos;
 			pTile[tileCounter].endingY = tileYPos + pDimensions->tileWidth;
 			pTile[tileCounter].endingX = tileXPos + pDimensions->tileLength;
-			pTile[tileCounter].middleY = tileYPos + pDimensions->tileWidth / 2;
-			pTile[tileCounter].middleX = tileYPos + pDimensions->tileLength / 2;
+			pTile[tileCounter].middleY = pDimensions->tileWidth / 2 - 1;
+			pTile[tileCounter].middleX = pDimensions->tileLength / 2 - 1;
 			pTile[tileCounter].isEmpty = true;
-			strcpy(pTile[tileCounter].pieceName, "None");
 			getNotation(column, positionCounter, notationChar);
 			strcpy(pTile[tileCounter].notation, notationChar);
 		

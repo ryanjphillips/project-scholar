@@ -7,6 +7,10 @@ typedef struct Chessboard {
 	int innerBoardBeginningX;
 	int innerBoardCenterY;
 	int innerBoardCenterX;
+	int innerBoardTopRightY;
+	int innerBoardTopRightX;
+	int innerBoardBottomLeftY;
+	int innerBoardBottomLeftX;
 	int outerBoardEndingY;
 	int outerBoardEndingX;
 	int outerBoardBeginningY;

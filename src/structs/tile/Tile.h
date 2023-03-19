@@ -1,5 +1,6 @@
 typedef struct Tile{
 	WINDOW * pWindow;
+	struct Piece *pPiece;
 	int backgroundColor;
 	int beginningY;
 	int beginningX;
@@ -10,7 +11,6 @@ typedef struct Tile{
 	int width;
 	int length;
 	_Bool isEmpty;
-	char pieceName[30];
 	char notation[10];
 
 } Tile;
