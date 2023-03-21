@@ -12,5 +12,6 @@ typedef struct Tile{
 	int length;
 	_Bool isEmpty;
 	char notation[10];
+	_Bool isSelected;
 
 } Tile;

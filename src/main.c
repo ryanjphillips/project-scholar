@@ -4,6 +4,7 @@ int main() {
 	// Variables 
 	int ch;
 	int selectedTile;
+	int previousTile;
 	int previousBackground; 
 	int count;
 	MEVENT event;
@@ -27,8 +28,10 @@ int main() {
 	struct Tile boardTiles[64];
 	struct Piece boardPieces[32];
 	struct Chessboard chessBoard;
+	struct Player whitePlayer;
 
 	// Starting Board
+	player(&whitePlayer);
 	dimensions(&boardDimensions);
 	tile(boardTiles, &boardDimensions);
 	refreshWindowArray(boardTiles);
@@ -40,32 +43,29 @@ int main() {
   {
     if (ch == KEY_MOUSE)
     {
-			wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(boardTiles[selectedTile].backgroundColor)); 
-			wrefresh(boardTiles[selectedTile].pWindow);
       assert(getmouse(&event) == OK);
 
 			  selectedTile = determineSelectedTile(boardTiles, event.y, event.x);
 
+				// Restore previous click window to not have "clicked background."
+				if (selectedTile != -1 && previousTile > -1 ) {
+				  removeWindowBackground(boardTiles, 64);
+			    wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+			    wrefresh(boardTiles[previousTile].pWindow);
+				}
+
+        previousTile = selectedTile;
+
 				if (selectedTile != -1) {
-					move(3,0);
-					clrtoeol();
-					mvaddstr(0,0, "Location:");
-					mvaddstr(1, 0, boardTiles[selectedTile].notation);
-					mvaddstr(2,0, "Piece at Location:");
-					move(5,0);
-					clrtoeol();
 
+			      wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(boardTiles[selectedTile].backgroundColor)); 
+			      wrefresh(boardTiles[selectedTile].pWindow);
 					if (boardTiles[selectedTile].isEmpty == false) {
+						
 					  determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece);
-					  mvaddstr(3, 0, boardTiles[selectedTile].pPiece->name);
-						mvaddstr(4,0, "Piece Notation:");
-						mvaddstr(5,0,boardTiles[selectedTile].pPiece->notation);
-					} else {
-						mvaddstr(3, 0, "none");
+		  	    wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
+		  	    wrefresh(boardTiles[selectedTile].pWindow);
 					}
-
-		  	  wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
-		  	  wrefresh(boardTiles[selectedTile].pWindow);
 				}
 		}
 		count++;

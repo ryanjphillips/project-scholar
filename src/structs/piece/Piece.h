@@ -3,7 +3,7 @@ typedef struct Piece {
 	const char *character;
 	int position;
 	int piecePoints;
-	int blackOrWhite;
+	char *blackOrWhite;
 	char *notation;
 	_Bool hasMoved;
 } Piece;

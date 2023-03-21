@@ -1,11 +1,7 @@
-#include <ncurses.h>
-void displayLegalMoves(struct Tile *pTile, int sizeOfArray) {
+void displayLegalMoves(struct Tile *pTile) {
 
-	int counter;
-
-	for (counter = 0; counter < sizeOfArray; counter++) {
-		box(pTile[counter].pWindow, 0, 0);
-		wborder(pTile[counter].pWindow, ' ', ' ', ' ', ' ', ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
-		wrefresh(pTile[counter].pWindow);
-	}
+		box(pTile->pWindow, 0, 0);
+		wborder(pTile->pWindow, ' ', ' ', ' ', ' ', ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
+		wrefresh(pTile->pWindow);
+		pTile->isSelected = true;
 }

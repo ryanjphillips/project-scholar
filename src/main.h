@@ -14,12 +14,15 @@
 #include "./structs/chessboard/Chessboard.h"
 #include "./structs/piece/Piece.h"
 #include "./structs/pawn-movement/PawnMovement.h"
+#include "./structs/player/Player.h"
 
 // Stuct Body
 #include "./structs/dimensions/dimensions.c"
 #include "./structs/tile/tile.c"
 #include "./structs/chessboard/chessboard.c"
 #include "./structs/piece/piece.c"
+#include "./structs/player/player.c"
+
 
 // Non-library file imports.
 #include "./ui/menus/main-menu/mainMenu.c"
@@ -28,6 +31,7 @@
 #include "./engine/chessboard/refreshWindowArray.c"
 #include "./engine/chessboard/addPieceToTile.c"
 #include "./engine/chessboard/determinePieceSelection.c"
+#include "./engine/chessboard/removeWindowBackground.c"
 
 
 // Color Definitions
