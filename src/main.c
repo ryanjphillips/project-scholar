@@ -47,28 +47,27 @@ int main() {
 
 			  selectedTile = determineSelectedTile(boardTiles, event.y, event.x);
 
-				// Restore previous click window to not have "clicked background."
-				if (selectedTile != -1 && previousTile > -1 ) {
+				// Restore previous click window to not have "clicked background." when the user clicks outside of the chessboard.
+				
+				if (previousTile != -1) {
 				  removeWindowBackground(boardTiles, 64);
 			    wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
 			    wrefresh(boardTiles[previousTile].pWindow);
 				}
 
         previousTile = selectedTile;
+				if (boardTiles[selectedTile].isEmpty == false) {
+					if (selectedTile != -1 && strcmp(boardTiles[selectedTile].pPiece->blackOrWhite, "White") == 0) {
 
-				if (selectedTile != -1) {
-
-			      wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(boardTiles[selectedTile].backgroundColor)); 
-			      wrefresh(boardTiles[selectedTile].pWindow);
-					if (boardTiles[selectedTile].isEmpty == false) {
-						
-					  determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece);
-		  	    wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
-		  	    wrefresh(boardTiles[selectedTile].pWindow);
-					}
+							wrefresh(boardTiles[previousTile].pWindow);
+							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(boardTiles[selectedTile].backgroundColor)); 
+							wrefresh(boardTiles[selectedTile].pWindow);
+							determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece);
+							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
+							wrefresh(boardTiles[selectedTile].pWindow);
+						}
 				}
 		}
-		count++;
   }
 
 	getch();

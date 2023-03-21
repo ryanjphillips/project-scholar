@@ -12,7 +12,7 @@ void pawnMovement(struct Tile *pTile, struct Piece *pPawn) {
 
 		displayLegalMoves(returnTileIfTileIsEmpty(pTile, pawnPosition - 8));
 		displayLegalMoves(returnTileIfTileIsEmpty(pTile, pawnPosition - 16));
-		pPawn->hasMoved = true;
+		//pPawn->hasMoved = true;
 	} else {
 
 		displayLegalMoves(returnTileIfTileIsEmpty(pTile, pawnPosition - 8));
