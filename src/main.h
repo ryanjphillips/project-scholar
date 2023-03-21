@@ -13,7 +13,7 @@
 #include "./structs/tile/Tile.h"
 #include "./structs/chessboard/Chessboard.h"
 #include "./structs/piece/Piece.h"
-#include "./structs/pawn-movement/PawnMovement.h"
+#include "./structs/pawnMovement/PawnMovement.h"
 #include "./structs/player/Player.h"
 
 // Stuct Body
@@ -30,8 +30,10 @@
 #include "./engine/chessboard/determineSelectedTile.c"
 #include "./engine/chessboard/refreshWindowArray.c"
 #include "./engine/chessboard/addPieceToTile.c"
+#include "./engine/chessboard/addPieceToTileSingle.c"
 #include "./engine/chessboard/determinePieceSelection.c"
 #include "./engine/chessboard/removeWindowBackground.c"
+#include "./engine/chessboard/removePieceFromTile.c"
 
 
 // Color Definitions

@@ -23,8 +23,8 @@ void tile(struct Tile *pTile , struct Dimensions *pDimensions) {
 			pTile[tileCounter].beginningX = tileXPos;
 			pTile[tileCounter].endingY = tileYPos + pDimensions->tileWidth;
 			pTile[tileCounter].endingX = tileXPos + pDimensions->tileLength;
-			pTile[tileCounter].middleY = pDimensions->tileWidth / 2 - 1;
-			pTile[tileCounter].middleX = pDimensions->tileLength / 2 - 1;
+			pTile[tileCounter].middleY = pDimensions->tileWidth / 2;
+			pTile[tileCounter].middleX = pDimensions->tileLength / 2;
 			pTile[tileCounter].isEmpty = true;
 			pTile[tileCounter].isSelected = false;
 			getNotation(column, positionCounter, notationChar);

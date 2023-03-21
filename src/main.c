@@ -41,11 +41,18 @@ int main() {
 
   while ((ch = getch()) != 'q')
   {
-    if (ch == KEY_MOUSE)
-    {
+    if (ch == KEY_MOUSE) {
       assert(getmouse(&event) == OK);
 
 			  selectedTile = determineSelectedTile(boardTiles, event.y, event.x);
+
+				// Determine if we need if a move was made and do so if it was
+
+				if (boardTiles[selectedTile].isSelected == true) {
+
+					addPieceToTileSingle(boardTiles[selectedTile], boardTiles[previousTile].pPiece);
+					removePieceFromTile(boardTiles[previousTile]);
+				}
 
 				// Restore previous click window to not have "clicked background." when the user clicks outside of the chessboard.
 				
@@ -56,6 +63,7 @@ int main() {
 				}
 
         previousTile = selectedTile;
+
 				if (boardTiles[selectedTile].isEmpty == false) {
 					if (selectedTile != -1 && strcmp(boardTiles[selectedTile].pPiece->blackOrWhite, "White") == 0) {
 
