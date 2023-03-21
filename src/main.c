@@ -55,8 +55,8 @@ int main() {
 					move(5,0);
 					clrtoeol();
 
-					determinePieceSelection(boardTiles[selectedTile].pPiece);
 					if (boardTiles[selectedTile].isEmpty == false) {
+					  determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece);
 					  mvaddstr(3, 0, boardTiles[selectedTile].pPiece->name);
 						mvaddstr(4,0, "Piece Notation:");
 						mvaddstr(5,0,boardTiles[selectedTile].pPiece->notation);

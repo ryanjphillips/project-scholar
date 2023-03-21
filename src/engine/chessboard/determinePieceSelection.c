@@ -1,11 +1,11 @@
-#include "../pieces/pawnMovement.c"
-void determinePieceSelection(struct Piece *pPiece) {
+#include "../pieces/movement/pawnMovement.c"
+void determinePieceSelection(struct Tile *pTile, struct Piece *pPiece) {
 
 	char pieceName[20];
 	strcpy(pieceName, pPiece->notation);
 	switch(*pieceName) {
     case 'P':
-			pawnMovement();
+			pawnMovement(pTile, pPiece);
 			break;
 	};
 }

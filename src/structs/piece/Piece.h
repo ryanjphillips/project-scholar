@@ -5,4 +5,5 @@ typedef struct Piece {
 	int piecePoints;
 	int blackOrWhite;
 	char *notation;
+	_Bool hasMoved;
 } Piece;
