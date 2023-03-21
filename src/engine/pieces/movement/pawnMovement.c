@@ -1,19 +1,20 @@
 #include "../displayLegalMoves.c"
+#include "../returnTileIfTileIsEmpty.c"
+
 void *pawnMovement(struct Tile *pTile, struct Piece *pPawn) {
 	struct Tile *pTileArray;
-	int pawnPostion;
+	int pawnPosition;
 
 	// Pawns move two squares first move.
 	
-	pawnPositon  = pPawn->position ;
+	pawnPosition  = pPawn->position ;
 
 	if (pPawn->hasMoved = false) {
-		pTileArray[0] = pTile[37];
-		pTileArray[1] = pTile[45];
+		*pTileArray[0] = returnTileIfTileIsEmpty(pTile, pawnPosition - 8);
+	  *pTileArray[1] = returnTileIfTileIsEmpty(pTile, pawnPosition - 16);
 		pPawn->hasMoved = true;
 	} else {
 
-		pTileArray[0] = pTile[37];
 	}
 
 	displayLegalMoves(pTileArray, 2 );

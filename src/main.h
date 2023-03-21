@@ -13,6 +13,7 @@
 #include "./structs/tile/Tile.h"
 #include "./structs/chessboard/Chessboard.h"
 #include "./structs/piece/Piece.h"
+#include "./structs/pawn-movement/PawnMovement.h"
 
 // Stuct Body
 #include "./structs/dimensions/dimensions.c"
