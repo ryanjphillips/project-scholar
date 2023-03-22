@@ -23,6 +23,7 @@ int main() {
 	start_color();
 	refresh();
 	initColors();
+	curs_set(0);
 
 	struct Dimensions boardDimensions;
 	struct Tile boardTiles[64];
@@ -50,8 +51,8 @@ int main() {
 
 				if (boardTiles[selectedTile].isSelected == true) {
 
-					addPieceToTileSingle(boardTiles[selectedTile], boardTiles[previousTile].pPiece);
-					removePieceFromTile(boardTiles[previousTile]);
+					addPieceToTileSingle(&boardTiles[selectedTile], &boardTiles[previousTile]);
+					removePieceFromTile(&boardTiles[previousTile]);
 				}
 
 				// Restore previous click window to not have "clicked background." when the user clicks outside of the chessboard.
