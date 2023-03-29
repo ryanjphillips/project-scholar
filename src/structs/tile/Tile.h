@@ -10,8 +10,8 @@ typedef struct Tile{
 	int middleY;
 	int width;
 	int length;
-	_Bool isEmpty;
+	bool isEmpty;
 	char notation[10];
-	_Bool isSelected;
+	bool isSelected;
 
 } Tile;
