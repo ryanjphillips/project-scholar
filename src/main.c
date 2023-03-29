@@ -39,8 +39,6 @@ int main() {
 	piece(boardPieces);
 	chessboard(&chessBoard, boardTiles);
 	addPieceToTile(boardTiles, boardPieces, 32);
-
-	
   while ((ch = getch()) != 'q')
   {
     if (ch == KEY_MOUSE) {
@@ -50,15 +48,13 @@ int main() {
 
 				// Determine if we need if a move was made and do so if it was
 
+				boardTiles[selectedTile].isEmpty = 10;
+				/*
 				if (boardTiles[selectedTile].isSelected == true) {
-					 addPieceToTileSingle(boardTiles, boardTiles, selectedTile, previousTile);
+					 addPieceToTileSingle(boardTiles, selectedTile, previousTile);
 					 removePieceFromTile(&boardTiles[previousTile]);
-
-					 boardTiles[selectedTile].isEmpty = false;
-					 move(10,0);
-					 printw("%s", " ");
-					 printw("%d", boardTiles[selectedTile].isEmpty);	
 				}
+				*/
 
 				// Restore previous click window to not have "clicked background." when the user clicks outside of the chessboard.
 				
@@ -68,15 +64,11 @@ int main() {
 			    wrefresh(boardTiles[previousTile].pWindow);
 				}
 
-				move (0,0);
-				printw("Selected Tile is isEmpty?");	
-				move(1,0);
-				printw("%s", " ");
-				printw("%d", boardTiles[selectedTile].isEmpty);	
-
         previousTile = selectedTile;
 
-				if (boardTiles[selectedTile].isEmpty == false) {
+				printw("YOOOO\n");
+
+				if (boardTiles[selectedTile].isEmpty == 10) {
 					if (selectedTile != -1 && strcmp(boardTiles[selectedTile].pPiece->blackOrWhite, "White") == 0) {
 							wrefresh(boardTiles[previousTile].pWindow);
 							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(boardTiles[selectedTile].backgroundColor)); 
@@ -84,7 +76,7 @@ int main() {
 							determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece);
 							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
 							wrefresh(boardTiles[selectedTile].pWindow);
-						}
+					}
 				}
 		}
   }

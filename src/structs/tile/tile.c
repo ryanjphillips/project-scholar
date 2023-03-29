@@ -25,7 +25,7 @@ void tile(struct Tile *pTile , struct Dimensions *pDimensions) {
 			pTile[tileCounter].endingX = tileXPos + pDimensions->tileLength;
 			pTile[tileCounter].middleY = pDimensions->tileWidth / 2;
 			pTile[tileCounter].middleX = pDimensions->tileLength / 2;
-			pTile[tileCounter].isEmpty = true;
+			pTile[tileCounter].isEmpty = 20;
 			pTile[tileCounter].isSelected = false;
 			getNotation(column, positionCounter, notationChar);
 			strcpy(pTile[tileCounter].notation, notationChar);

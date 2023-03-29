@@ -10,7 +10,7 @@ typedef struct Tile{
 	int middleY;
 	int width;
 	int length;
-	bool isEmpty;
+	int isEmpty;
 	char notation[10];
 	bool isSelected;
 
