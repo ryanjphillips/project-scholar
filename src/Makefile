@@ -1,5 +1,5 @@
 make:
-	gcc -o main main.c -lmenu -lncursesw
+	gcc -o main main.c -lmenu -lncursesw 
 
 debug-options:
 	gcc -g3 -o main main.c -lmenu -lncursesw

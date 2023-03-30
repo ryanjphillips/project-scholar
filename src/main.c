@@ -1,20 +1,19 @@
 #include "main.h"
 
-int main() {
-	// Variables 
+int main() { // Variables 
 	int ch;
 	int selectedTile;
 	int previousTile;
-	int previousBackground; 
-	int count;
+	int backgroundColor;
+	int determinePieceColor;
+	char pieceColor[20];
 	MEVENT event;
 
 	// Ncurses setup 
 	setlocale(LC_ALL, "");
 	initscr();
 	cbreak();
-	clear();
-  raw();
+	clear(); raw();
   keypad(stdscr, TRUE);
   mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
 	noecho();
@@ -39,49 +38,70 @@ int main() {
 	piece(boardPieces);
 	chessboard(&chessBoard, boardTiles);
 	addPieceToTile(boardTiles, boardPieces, 32);
-  while ((ch = getch()) != 'q')
-  {
-    if (ch == KEY_MOUSE) {
+
+	// Initialized values
+	
+	selectedTile = 0;
+	previousTile = 0;
+	backgroundColor = 0;
+
+  while ((ch = getch()) != 'q') {
+  	if (ch == KEY_MOUSE) {
       assert(getmouse(&event) == OK);
 
-			  selectedTile = determineSelectedTile(boardTiles, event.y, event.x);
+			selectedTile = determineSelectedTile(boardTiles, event.y, event.x);
 
-				// Determine if we need if a move was made and do so if it was
+			// First Determine if the move is an legal square on the board.
+			
+			if (selectedTile != -1) {
 
-				boardTiles[selectedTile].isEmpty = 10;
-				/*
-				if (boardTiles[selectedTile].isSelected == true) {
-					 addPieceToTileSingle(boardTiles, selectedTile, previousTile);
-					 removePieceFromTile(&boardTiles[previousTile]);
-				}
-				*/
-
-				// Restore previous click window to not have "clicked background." when the user clicks outside of the chessboard.
+				// Second determine if the mouse click is to make a move with an already selected piece.
 				
-				if (previousTile != -1) {
-				  removeWindowBackground(boardTiles, 64);
-			    wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
-			    wrefresh(boardTiles[previousTile].pWindow);
-				}
+				if (boardTiles[selectedTile].isSelected == true) {
 
-        previousTile = selectedTile;
+					addPieceToTileSingle(boardTiles, selectedTile, previousTile);
+					removePieceFromTile(&boardTiles[previousTile]);
+					removeWindowBackground(boardTiles, 64);
+					wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+					wrefresh(boardTiles[previousTile].pWindow);
 
-				printw("YOOOO\n");
+				// If not a mouse click to make an already selected piece, then determine if the tile has a valid piece. 
+				
+				} else if (boardTiles[selectedTile].isEmpty == 0) {
 
-				if (boardTiles[selectedTile].isEmpty == 10) {
-					if (selectedTile != -1 && strcmp(boardTiles[selectedTile].pPiece->blackOrWhite, "White") == 0) {
+						strcpy(pieceColor, boardTiles[selectedTile].pPiece->blackOrWhite);
+						determinePieceColor = strcmp(pieceColor, "White");
+
+						// If the color of the piece is the players then we can precede with the "picking up of the piece."
+						if (determinePieceColor == 0) {
+
+							printw("%d", previousTile);
+							removeWindowBackground(boardTiles, 64);
+							wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
 							wrefresh(boardTiles[previousTile].pWindow);
-							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(boardTiles[selectedTile].backgroundColor)); 
+							backgroundColor = COLOR_PAIR(boardTiles[selectedTile].backgroundColor);
+							wbkgd(boardTiles[selectedTile].pWindow, backgroundColor); 
 							wrefresh(boardTiles[selectedTile].pWindow);
 							determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece);
 							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
 							wrefresh(boardTiles[selectedTile].pWindow);
-					}
+						}
 				}
+			
+			  previousTile = selectedTile;
+
+				// Edge Case: Clicking off the board to remove selected piece UI.
+				
+			} else if (previousTile != -1) {
+				  removeWindowBackground(boardTiles, 64);
+			    wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+			    wrefresh(boardTiles[previousTile].pWindow);
+			} 
 		}
   }
 
-	getch();
+  deleteTileWindow(boardTiles, 64);
+	delwin(stdscr);
 	endwin();
 	return 0;
 }

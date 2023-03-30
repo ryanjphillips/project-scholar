@@ -8,7 +8,7 @@ void addPieceToTile(struct Tile *pTile, struct Piece *pPiece, int sizeOfArray) {
 
 		pieceBackGround = determinePieceColors(pTile[counter].backgroundColor);
 		position = pPiece[counter].position;
-		pTile[position].isEmpty = 10;	
+		pTile[position].isEmpty = 0;	
 		pTile[position].pPiece = &pPiece[counter];
 		attron(COLOR_PAIR(pieceBackGround));
 		mvwaddstr(pTile[position].pWindow, pTile[position].middleY, pTile[position].middleX, pPiece[counter].character);

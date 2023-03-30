@@ -10,5 +10,6 @@ void addPieceToArray(struct Piece *pDestinationArray, struct Piece *pSourceArray
     pDestinationArray[counter].piecePoints=  pSourceArray[counter].piecePoints;
     pDestinationArray[counter].blackOrWhite =  pSourceArray[counter].blackOrWhite;
     pDestinationArray[counter].notation = pSourceArray[counter].notation;
+    pDestinationArray[counter].hasMoved = pSourceArray[counter].hasMoved;
   }
 }
