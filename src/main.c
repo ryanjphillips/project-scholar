@@ -84,9 +84,21 @@ int main() { // Variables
 							determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece);
 							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
 							wrefresh(boardTiles[selectedTile].pWindow);
+						} else if (determinePieceColor != 0) {
+
+							removeWindowBackground(boardTiles, 64);
+							wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+							wrefresh(boardTiles[previousTile].pWindow);
 						}
+
+					// If the tile is an empty non-selectable tile then we need to clear the current selection.
+				} else if (boardTiles[selectedTile].isEmpty == 1) {
+
+				  removeWindowBackground(boardTiles, 64);
+			    wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+			    wrefresh(boardTiles[previousTile].pWindow);
 				}
-			
+
 			  previousTile = selectedTile;
 
 				// Edge Case: Clicking off the board to remove selected piece UI.
