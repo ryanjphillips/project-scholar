@@ -75,7 +75,6 @@ int main() { // Variables
 						// If the color of the piece is the players then we can precede with the "picking up of the piece."
 						if (determinePieceColor == 0) {
 
-							printw("%d", previousTile);
 							removeWindowBackground(boardTiles, 64);
 							wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
 							wrefresh(boardTiles[previousTile].pWindow);
