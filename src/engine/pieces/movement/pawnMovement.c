@@ -1,6 +1,5 @@
 #include "../displayLegalMoves.c"
-#include "../drawLegalTileIfEmpty.c"
-#include "../drawLegalTileIfEnemy.c"
+#include "../determineLegalTile.c"
 
 void pawnMovement(struct Tile *pTile, struct Piece *pPawn) {
 
@@ -9,15 +8,13 @@ void pawnMovement(struct Tile *pTile, struct Piece *pPawn) {
 
 	if (pPawn->hasMoved == false) {
 
-		drawLegalTileIfEmpty(pTile, pawnPosition - 8);
-		drawLegalTileIfEmpty(pTile, pawnPosition - 16);
-	} 
+		determineLegalTile(pTile, pawnPosition - 8);
+		determineLegalTile(pTile, pawnPosition - 16);
+	} else if (pawnPosition > 7) {
 
-	if (pawnPosition > 7) {
-
-		drawLegalTileIfEmpty(pTile, pawnPosition - 8);
-		drawLegalTileIfEnemy(pTile, pawnPosition - 8 + 1);
-		drawLegalTileIfEnemy(pTile, pawnPosition - 8 - 1);
+		determineLegalTile(pTile, pawnPosition - 8);
+		determineLegalTile(pTile, pawnPosition - 8 + 1);
+		determineLegalTile(pTile, pawnPosition - 8 - 1);
 	
 	// The pawn is on the end of the board, we need to promote the pawn. 
 	
