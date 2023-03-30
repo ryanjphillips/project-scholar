@@ -7,13 +7,16 @@
 #include <stdbool.h>
 #include <assert.h>
 #include <stdio.h>
+#include <time.h>
 
 // Struct Definitions
+#include "./structs/coords/Coords.h"
+#include "./structs/turnSummary/TurnSummary.h"
+#include "./structs/gameState/GameState.h"
 #include "./structs/dimensions/Dimensions.h"
 #include "./structs/tile/Tile.h"
 #include "./structs/chessboard/Chessboard.h"
 #include "./structs/piece/Piece.h"
-#include "./structs/pawnMovement/PawnMovement.h"
 #include "./structs/player/Player.h"
 
 // Stuct Body

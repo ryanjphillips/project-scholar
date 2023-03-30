@@ -7,4 +7,7 @@ void chessboard(struct Chessboard *pChessBoard, struct Tile *pTiles) {
 	pChessBoard->boardRows = 8;
 	pChessBoard->boardLength = pTiles->length * 8;
 	pChessBoard->boardWidth = pTiles->width * 8;
+
+	pChessBoard->boardWidth = pTiles->width * 8;
+	pChessBoard->boardWidth = pTiles->width * 8;
 } 

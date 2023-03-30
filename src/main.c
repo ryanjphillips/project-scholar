@@ -45,6 +45,8 @@ int main() { // Variables
 	previousTile = 0;
 	backgroundColor = 0;
 
+	// Chess Event Loop
+	
   while ((ch = getch()) != 'q') {
   	if (ch == KEY_MOUSE) {
       assert(getmouse(&event) == OK);
@@ -111,6 +113,8 @@ int main() { // Variables
 		}
   }
 
+	// Cleanup 
+	
   deleteTileWindow(boardTiles, 64);
 	delwin(stdscr);
 	endwin();
