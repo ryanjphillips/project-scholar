@@ -18,7 +18,7 @@ void piece(struct Piece *pPiece)   {
     {"Black Pawn", BLACKPAWN, 13, 1, "Black","P", false},
     {"Black Pawn", BLACKPAWN, 14, 1, "Black","P", false},
     {"Black Pawn", BLACKPAWN, 15, 1, "Black","P", false},
-    {"White Rook", WHITEROOK, 56, 5,"White","N", false},
+    {"White Rook", WHITEROOK, 56, 5,"White","R", false},
     {"White Knight", WHITEKNIGHT, 57, 3,"White","N", false},
     {"White Bishop", WHITEBISHOP, 58, 3,"White","B", false},
     {"White Queen", WHITEQUEEN, 59, 9,"White","Q", false},
