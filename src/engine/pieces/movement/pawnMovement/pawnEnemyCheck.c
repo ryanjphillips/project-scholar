@@ -1,13 +1,12 @@
-void pawnEnemyCheck(struct Tile *pTile, int position) {
-	char pieceColor[30];
-	int determinePieceColor;
+void pawnEnemyCheck(struct Tile *pTile, int position, int newPosition) {
 
-	if (pTile[position].isEmpty == 0) {
-	  strcpy(pieceColor, pTile[position].pPiece->blackOrWhite);
-	  determinePieceColor = strcmp(pieceColor, "White");
-		if (determinePieceColor != 0) {
+	if (pTile[newPosition].isEmpty == 0) {
+		int isPieceColorBlack = checkIfPieceIsWhite(pTile[newPosition].pPiece->blackOrWhite); 
+		
+		int isOffBoard = checkIfPawnPositionIsOffBoard(position, newPosition);
 
-		  displayLegalMoves(&pTile[position]);
+		if (isPieceColorBlack != 0 && isOffBoard == 0) {
+		  displayLegalMoves(&pTile[newPosition]);
 		}
 	}
 }

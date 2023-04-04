@@ -5,14 +5,22 @@ void pawnMovement(struct Tile *pTile, struct Piece *pPawn) {
 	int pawnPosition;
 	pawnPosition  = pPawn->position ;
 
+	// Describes the pawn attacks
+	int forwardPawnAttack = pawnPosition - 8;
+	int doubleForwardPawnAttack = forwardPawnAttack - 8;
+	int leftPawnAttack = pawnPosition - 8 + 1;
+	int rightPawnAttack = pawnPosition - 8 - 1;
+
+	// Check if its the first move.
 	if (pPawn->hasMoved == false) {
+		pawnEmptyCheck(pTile, forwardPawnAttack);
+		pawnEmptyCheck(pTile, doubleForwardPawnAttack);
 
-		pawnEmptyCheck(pTile, pawnPosition - 8);
-		pawnEmptyCheck(pTile, pawnPosition - 16);
+	// Make sure the pawns do not go off the board.
 	} else if (pawnPosition > 7) {
+		pawnEmptyCheck(pTile, forwardPawnAttack);
+		pawnEnemyCheck(pTile, pawnPosition, leftPawnAttack);
+		pawnEnemyCheck(pTile, pawnPosition, rightPawnAttack);
 
-		pawnEmptyCheck(pTile, pawnPosition - 8);
-		pawnEnemyCheck(pTile, pawnPosition - 8 + 1);
-		pawnEnemyCheck(pTile, pawnPosition - 8 - 1);
 	} 
 }

@@ -1,4 +1,3 @@
-#include "./bishopLegalTiles.c"
 void bishopMovement(struct Tile *pTile, struct Piece *pBishop) {
 
 	int northEastDiagonal = 1;
@@ -10,57 +9,63 @@ void bishopMovement(struct Tile *pTile, struct Piece *pBishop) {
 	int southEastCounter = 0;
 	int northWestCounter = 0;
 	int southWestCounter = 0;
-	int counter;
 	int bishopPosition;
+	int northEastNewPosition = 0;
+	int northWestNewPosition = 0;
+	int southEastNewPosition = 0;
+	int southWestNewPosition = 0;
 
   bishopPosition = pBishop->position;
 	columnPosition = bishopPosition % 8;
 
 	while (northEastDiagonal != 0 || northWestDiagonal != 0 || southEastDiagonal != 0 || southWestDiagonal != 0) {
 
-		printw("TEST");
-
 		// North East
 		if (northEastDiagonal != 0) {
 			northEastCounter = northEastCounter + 1;
-			if (northEastCounter + columnPosition >= 8) {
+			northEastNewPosition = (8 * -1 * northEastCounter) + (northEastCounter);
 
+			if (northEastCounter + columnPosition >= 8) {
 				northEastDiagonal = 0;
 			} else {
-			  northEastDiagonal = bishopLegalTiles(pTile, bishopPosition + ((8 * -1 * northEastCounter) + (northEastCounter)));
+			  northEastDiagonal = checkForLegalMoves(pTile, bishopPosition + northEastNewPosition);
 			}	
 		}
 
 		// North West 
 		if (northWestDiagonal != 0) {
 			northWestCounter = northWestCounter - 1;
-			if (northWestCounter + columnPosition < 0) {
+			northWestNewPosition = 8 * -1 * northWestCounter + (northWestCounter);
 
+			if (northWestCounter + columnPosition < 0) {
 				northWestDiagonal = 0;
 			} else {
-			  northWestDiagonal = bishopLegalTiles(pTile, bishopPosition + ((8 * -1 * northWestCounter) + (northWestCounter)));
+			  northWestDiagonal = checkForLegalMoves(pTile, bishopPosition + northWestNewPosition);
 			}	
 		}
 
 		// South East 
 		if (southEastDiagonal != 0) {
 			southEastCounter = southEastCounter + 1;
-			if (southEastCounter + columnPosition >= 8) {
+			southEastNewPosition = 8 * southEastCounter + southEastCounter;
 
+
+			if (southEastCounter + columnPosition >= 8) {
 				southEastDiagonal = 0;
 			} else {
-			  southEastDiagonal = bishopLegalTiles(pTile, bishopPosition + ((8 * southEastCounter) + (southEastCounter)));
+			  southEastDiagonal = checkForLegalMoves(pTile, bishopPosition + southEastNewPosition);
 			}	
 		}
 
 		// South West 
 		if (southWestDiagonal != 0) {
 			southWestCounter = southWestCounter - 1;
-			if (southWestCounter + columnPosition < 0) {
+			southWestNewPosition = 8 * southWestCounter + southWestCounter;
 
+			if (southWestCounter + columnPosition < 0) {
 				southWestDiagonal = 0;
 			} else {
-			  southWestDiagonal = bishopLegalTiles(pTile, bishopPosition + ((8 * southWestCounter) + (southWestCounter)));
+			  southWestDiagonal = checkForLegalMoves(pTile, bishopPosition + southWestNewPosition);
 			}	
 		}
 	}
