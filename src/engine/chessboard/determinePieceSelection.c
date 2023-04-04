@@ -2,6 +2,7 @@
 #include "../pieces/movement/pawnMovement/pawnMovement.c"
 #include "../pieces/movement/rookMovement/rookMovement.c"
 #include "../pieces/movement/queenMovement/queenMovement.c"
+#include "../pieces/movement/bishopMovement/bishopMovement.c"
 
 void determinePieceSelection(struct Tile *pTile, struct Piece *pPiece) {
 
@@ -17,6 +18,9 @@ void determinePieceSelection(struct Tile *pTile, struct Piece *pPiece) {
 			break;
 		case 'Q':
 			queenMovement(pTile, pPiece);
+			break;
+		case 'B':
+			bishopMovement(pTile, pPiece);
 			break;
 	};
 }
