@@ -1,4 +1,4 @@
-int checkForLegalMoves(struct Tile *pTile, int position) {
+int checkForLegalMoves(struct Tile *pTile, int position ) {
 
 	if (position > -1 && position < 64) {
 		if (pTile[position].isEmpty == 0) {

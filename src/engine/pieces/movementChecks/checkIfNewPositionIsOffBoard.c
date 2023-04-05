@@ -4,6 +4,13 @@ int checkIfNewPositionIsOffBoard(int position, int newPosition) {
   const int COLUMN_BEGINNING = position - columnNumber;
   const int COLUMN_ENDING = (COLUMN_BEGINNING + 8)- 1;
 
+  /*
+  printw("position : %d\n", position);
+  printw("newPosition : %d\n", newPosition);
+  printw("beg : %d\n", COLUMN_BEGINNING);
+  printw("end : %d\n", COLUMN_ENDING);
+  */
+
   if (newPosition  < COLUMN_BEGINNING || 
         newPosition > COLUMN_ENDING || 
         newPosition < 0 || 
