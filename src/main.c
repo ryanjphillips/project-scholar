@@ -29,6 +29,8 @@ int main() { // Variables
 	struct Piece boardPieces[32];
 	struct Chessboard chessBoard;
 	struct Player whitePlayer;
+	WINDOW *promotionWindows[4];
+	struct Tile promotionTiles[4]; 
 
 	// Starting Board
 	player(&whitePlayer);
@@ -38,6 +40,8 @@ int main() { // Variables
 	piece(boardPieces);
 	chessboard(&chessBoard, boardTiles);
 	addPieceToTile(boardTiles, boardPieces, 32);
+	createPromotionWindows(&chessBoard, promotionWindows, boardTiles[0].length);
+	createPromotionTiles(promotionTiles, promotionWindows, 4);
 
 	// Initialized values
 	
@@ -83,7 +87,7 @@ int main() { // Variables
 							backgroundColor = COLOR_PAIR(boardTiles[selectedTile].backgroundColor);
 							wbkgd(boardTiles[selectedTile].pWindow, backgroundColor); 
 							wrefresh(boardTiles[selectedTile].pWindow);
-							determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece);
+							determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece, &chessBoard, promotionTiles);
 							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
 							wrefresh(boardTiles[selectedTile].pWindow);
 						} else if (determinePieceColor != 0) {
@@ -115,6 +119,7 @@ int main() { // Variables
 
 	// Cleanup 
 	
+	deleteTileWindow(promotionTiles, 4);
   deleteTileWindow(boardTiles, 64);
 	delwin(stdscr);
 	endwin();

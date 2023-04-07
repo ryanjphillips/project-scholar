@@ -7,6 +7,7 @@ void tile(struct Tile *pTile , struct Dimensions *pDimensions) {
 	int tileXPos;
 	int positionCounter = 8;
 	char notationChar[20];
+	char windowBorders[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
 
 	for (row = 0; row < pDimensions->rows ; row++) {
 		for (column = 0; column < pDimensions->columns; column++) {
@@ -17,7 +18,7 @@ void tile(struct Tile *pTile , struct Dimensions *pDimensions) {
 			tileXPos = (pDimensions->standardMaxScreenX / 2) - (pDimensions->boardLength / 2) + (pDimensions->tileLength * column); 
 
 			// Create Window takes in HEIGHT and Length, which height will equal width, in my case.
-			pTile[tileCounter].pWindow = createTileWindow(pDimensions->tileWidth, pDimensions->tileLength, tileYPos, tileXPos);
+			pTile[tileCounter].pWindow = createTileWindow(pDimensions->tileWidth, pDimensions->tileLength, tileYPos, tileXPos, windowBorders);
 			pTile[tileCounter].backgroundColor = setTileColor(row, column); 
 			pTile[tileCounter].beginningY = tileYPos;
 			pTile[tileCounter].beginningX = tileXPos;
@@ -27,6 +28,8 @@ void tile(struct Tile *pTile , struct Dimensions *pDimensions) {
 			pTile[tileCounter].middleX = pDimensions->tileLength / 2;
 			pTile[tileCounter].isEmpty = 1;
 			pTile[tileCounter].isSelected = false;
+			pTile[tileCounter].length = pDimensions->tileLength;
+			pTile[tileCounter].width = pDimensions->tileWidth;
 			getNotation(column, positionCounter, notationChar);
 			strcpy(pTile[tileCounter].notation, notationChar);
 		

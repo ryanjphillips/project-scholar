@@ -1,4 +1,4 @@
-WINDOW *createTileWindow(int length , int width, int startY, int startX);
+WINDOW *createTileWindow(int length , int width, int startY, int startX, char* pWindowBorder);
 void getNotation(int column, int posCounter, char *pPosition);
 int setTileColor(int row, int column);
 void deleteTileWindow(Tile *pTile, int arraySize);

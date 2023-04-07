@@ -5,15 +5,11 @@ typedef struct Chessboard {
 	int boardRows;
 	int boardLength;
 	int boardWidth;
-
 	int innerBoardEndingY; 
 	int innerBoardEndingX;
-
 	Coords innerBoardBeginning;
-
 	int innerBoardCenterY;
 	int innerBoardCenterX;
-
 	Coords innerBoardTopRight;
 	Coords innerBoardBottomLeft;
 	Coords outerBoardEnding;

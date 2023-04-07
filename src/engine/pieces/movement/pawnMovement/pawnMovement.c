@@ -1,9 +1,10 @@
 #include "./pawnEnemyCheck.c"
 #include "./pawnEmptyCheck.c"
-void pawnMovement(struct Tile *pTile, struct Piece *pPawn) {
+
+void pawnMovement(struct Tile *pTile, struct Piece *pPawn, struct Chessboard *pChessBoard, struct Tile *pPromotionTiles) {
 
 	int pawnPosition;
-	pawnPosition  = pPawn->position ;
+	pawnPosition  = pPawn->position;
 
 	// Describes the pawn attacks
 	int forwardPawnAttack = pawnPosition - 8;
@@ -22,5 +23,8 @@ void pawnMovement(struct Tile *pTile, struct Piece *pPawn) {
 		pawnEnemyCheck(pTile, pawnPosition, leftPawnAttack);
 		pawnEnemyCheck(pTile, pawnPosition, rightPawnAttack);
 
+	} else {
+
+		refreshPromotionWindows(pPromotionTiles, 4);
 	} 
 }

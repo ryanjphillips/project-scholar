@@ -1,13 +1,13 @@
 #include "../pieces/Movement.h"
 
-void determinePieceSelection(struct Tile *pTile, struct Piece *pPiece) {
+void determinePieceSelection(struct Tile *pTile, struct Piece *pPiece, struct Chessboard *pChessBoard, struct Tile *pPromotionTiles) {
 
 	char pieceName[20];
 	strcpy(pieceName, pPiece->notation);
 
 	switch(*pieceName) {
 		case 'P':
-			pawnMovement(pTile, pPiece);
+			pawnMovement(pTile, pPiece, pChessBoard, pPromotionTiles);
 			break;
 		case 'R':
 			rookMovement(pTile, pPiece);

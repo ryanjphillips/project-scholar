@@ -2,9 +2,6 @@ int determineSelectedTile(struct Tile *pTile, int mouseYCoord, int mouseXCoord) 
 
 	const int BOARDSIZE = 64;
 	int tileCounter;
-	int standardScreenMiddleX;
-	int standardScreenMiddleY;
-	int standardScreenMax;
 
 	for (tileCounter = 0; tileCounter < BOARDSIZE; tileCounter++) {
 

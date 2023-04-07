@@ -37,6 +37,8 @@
 #include "./engine/chessboard/determinePieceSelection.c"
 #include "./engine/chessboard/removeWindowBackground.c"
 #include "./engine/chessboard/removePieceFromTile.c"
+#include "./engine/chessboard/createPromotionWindows.c"
+#include "./engine/chessboard/createPromotionTiles.c"
 
 
 // Color Definitions
