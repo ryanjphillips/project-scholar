@@ -1,9 +1,9 @@
-int determineSelectedTile(struct Tile *pTile, int mouseYCoord, int mouseXCoord) {
+int determineSelectedPromotion(struct Tile *pTile, int mouseYCoord, int mouseXCoord) {
 
-	const int BOARDSIZE = 64;
+	const int PROMOTION_TILES= 4;
 	int tileCounter;
 
-	for (tileCounter = 0; tileCounter < BOARDSIZE; tileCounter++) {
+	for (tileCounter = 0; tileCounter < PROMOTION_TILES; tileCounter++) {
 
 		if ((mouseYCoord >= pTile[tileCounter].beginningY && mouseYCoord < pTile[tileCounter].endingY) && mouseXCoord >= pTile[tileCounter].beginningX && mouseXCoord < pTile[tileCounter].endingX) {
 

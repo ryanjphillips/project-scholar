@@ -8,6 +8,7 @@
 #include "./movement/queenMovement/queenMovement.c"
 #include "./movement/knightMovement/knightMovement.c"
 #include "./movement/kingMovement/kingMovement.c"
+#include "./movement/pawnMovement/updatePawnPromotion.c"
 #include "./movement/pawnMovement/refreshPromotionWindows.c"
 #include "./movement/pawnMovement/pawnPromotion.c"
 #include "./movement/pawnMovement/pawnMovement.c"

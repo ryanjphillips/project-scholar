@@ -3,6 +3,7 @@
 int main() { // Variables 
 	int ch;
 	int selectedTile;
+	int selectedPromotion;
 	int previousTile;
 	int backgroundColor;
 	int determinePieceColor;
@@ -43,9 +44,15 @@ int main() { // Variables
 	createPromotionWindows(&chessBoard, promotionWindows, boardTiles[0].length);
 	createPromotionTiles(promotionTiles, promotionWindows, 4);
 
+				printw("%s\n", promotionTiles[0].pPiece->character);
+				printw("%s\n", promotionTiles[1].pPiece->character);
+				printw("%s\n", promotionTiles[2].pPiece->character);
+				printw("%s\n", promotionTiles[3].pPiece->character);
+
 	// Initialized values
 	
 	selectedTile = 0;
+	selectedPromotion = 0;
 	previousTile = 0;
 	backgroundColor = 0;
 
@@ -53,9 +60,10 @@ int main() { // Variables
 	
   while ((ch = getch()) != 'q') {
   	if (ch == KEY_MOUSE) {
-      assert(getmouse(&event) == OK);
+    assert(getmouse(&event) == OK);
 
 			selectedTile = determineSelectedTile(boardTiles, event.y, event.x);
+			selectedPromotion = determineSelectedPromotion(promotionTiles, event.y, event.x);
 
 			// First Determine if the move is an legal square on the board.
 			
@@ -87,7 +95,7 @@ int main() { // Variables
 							backgroundColor = COLOR_PAIR(boardTiles[selectedTile].backgroundColor);
 							wbkgd(boardTiles[selectedTile].pWindow, backgroundColor); 
 							wrefresh(boardTiles[selectedTile].pWindow);
-							determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece, &chessBoard, promotionTiles);
+							determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece, &chessBoard, promotionTiles, selectedPromotion);
 							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
 							wrefresh(boardTiles[selectedTile].pWindow);
 						} else if (determinePieceColor != 0) {
@@ -105,15 +113,26 @@ int main() { // Variables
 			    wrefresh(boardTiles[previousTile].pWindow);
 				}
 
-			  previousTile = selectedTile;
+				previousTile = selectedTile;
 
+			 // Logic For Pawn Promotion
+
+			 } else if (selectedPromotion != -1) {
+
+				//printw("%p\n", &promotionTiles[selectedPromotion]);
+				printw("%s\n", promotionTiles[0].pPiece->character);
+				printw("%s\n", promotionTiles[1].pPiece->character);
+				printw("%s\n", promotionTiles[2].pPiece->character);
+				printw("%s\n", promotionTiles[3].pPiece->character);
+				determinePieceSelection(boardTiles, boardTiles[previousTile].pPiece, &chessBoard, promotionTiles, selectedPromotion);
+			
 				// Edge Case: Clicking off the board to remove selected piece UI.
 				
 			} else if (previousTile != -1) {
 				  removeWindowBackground(boardTiles, 64);
 			    wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
 			    wrefresh(boardTiles[previousTile].pWindow);
-			} 
+			}
 		}
   }
 

@@ -1,7 +1,7 @@
 #include "./pawnEnemyCheck.c"
 #include "./pawnEmptyCheck.c"
 
-void pawnMovement(struct Tile *pTile, struct Piece *pPawn, struct Chessboard *pChessBoard, struct Tile *pPromotionTiles) {
+void pawnMovement(struct Tile *pTile, struct Piece *pPawn, struct Chessboard *pChessBoard, struct Tile *pPromotionTiles, int determinePromotion) {
 
 	int pawnPosition;
 	pawnPosition  = pPawn->position;
@@ -23,8 +23,13 @@ void pawnMovement(struct Tile *pTile, struct Piece *pPawn, struct Chessboard *pC
 		pawnEnemyCheck(pTile, pawnPosition, leftPawnAttack);
 		pawnEnemyCheck(pTile, pawnPosition, rightPawnAttack);
 
-	} else {
-
+		// Pawn Promotion
+	} else{
+		
 		refreshPromotionWindows(pPromotionTiles, 4);
+		
+		if (determinePromotion != -1) {
+			updatePawnPromotion(pTile, pPromotionTiles, pawnPosition, determinePromotion);
+	  }
 	} 
 }
