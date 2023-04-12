@@ -32,6 +32,8 @@ int main() { // Variables
 	struct Player whitePlayer;
 	WINDOW *promotionWindows[4];
 	struct Tile promotionTiles[4]; 
+	struct Commands commandWindow;
+	
 
 	// Starting Board
 	player(&whitePlayer);
@@ -41,13 +43,8 @@ int main() { // Variables
 	piece(boardPieces);
 	chessboard(&chessBoard, boardTiles);
 	addPieceToTile(boardTiles, boardPieces, 32);
-	createPromotionWindows(&chessBoard, promotionWindows, boardTiles[0].length);
-	createPromotionTiles(promotionTiles, promotionWindows, 4);
-
-				printw("%s\n", promotionTiles[0].pPiece->character);
-				printw("%s\n", promotionTiles[1].pPiece->character);
-				printw("%s\n", promotionTiles[2].pPiece->character);
-				printw("%s\n", promotionTiles[3].pPiece->character);
+	//createPromotionWindows(&chessBoard, promotionWindows, boardTiles[0].length);
+	//createPromotionTiles(promotionTiles, promotionWindows, 4);
 
 	// Initialized values
 	
@@ -60,79 +57,80 @@ int main() { // Variables
 	
   while ((ch = getch()) != 'q') {
   	if (ch == KEY_MOUSE) {
-    assert(getmouse(&event) == OK);
+      if(getmouse(&event) == OK) {
 
-			selectedTile = determineSelectedTile(boardTiles, event.y, event.x);
-			selectedPromotion = determineSelectedPromotion(promotionTiles, event.y, event.x);
+				selectedTile = determineSelectedTile(boardTiles, event.y, event.x);
+				selectedPromotion = determineSelectedPromotion(promotionTiles, event.y, event.x);
 
-			// First Determine if the move is an legal square on the board.
-			
-			if (selectedTile != -1) {
-
-				// Second determine if the mouse click is to make a move with an already selected piece.
+				// First Determine if the move is an legal square on the board.
 				
-				if (boardTiles[selectedTile].isSelected == true) {
+				if (selectedTile != -1) {
 
-					addPieceToTileSingle(boardTiles, selectedTile, previousTile);
-					removePieceFromTile(&boardTiles[previousTile]);
-					removeWindowBackground(boardTiles, 64);
-					wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
-					wrefresh(boardTiles[previousTile].pWindow);
+					// Second determine if the mouse click is to make a move with an already selected piece.
+					
+					if (boardTiles[selectedTile].isSelected == true) {
 
-				// If not a mouse click to make an already selected piece, then determine if the tile has a valid piece. 
+						addPieceToTileSingle(boardTiles, selectedTile, previousTile);
+						removePieceFromTile(&boardTiles[previousTile]);
+						removeWindowBackground(boardTiles, 64);
+						wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+						wrefresh(boardTiles[previousTile].pWindow);
+
+					// If not a mouse click to make an already selected piece, then determine if the tile has a valid piece. 
+					
+					} else if (boardTiles[selectedTile].isEmpty == 0) {
+
+							strcpy(pieceColor, boardTiles[selectedTile].pPiece->blackOrWhite);
+							determinePieceColor = strcmp(pieceColor, "White");
+
+							// If the color of the piece is the players then we can precede with the "picking up of the piece."
+							if (determinePieceColor == 0) {
+
+								removeWindowBackground(boardTiles, 64);
+								wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+								wrefresh(boardTiles[previousTile].pWindow);
+								backgroundColor = COLOR_PAIR(boardTiles[selectedTile].backgroundColor);
+								wbkgd(boardTiles[selectedTile].pWindow, backgroundColor); 
+								wrefresh(boardTiles[selectedTile].pWindow);
+								determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece, &chessBoard, promotionTiles, selectedPromotion);
+								wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
+								wrefresh(boardTiles[selectedTile].pWindow);
+							} else if (determinePieceColor != 0) {
+
+								removeWindowBackground(boardTiles, 64);
+								wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+								wrefresh(boardTiles[previousTile].pWindow);
+							}
+
+						// If the tile is an empty non-selectable tile then we need to clear the current selection.
+					} else if (boardTiles[selectedTile].isEmpty == 1) {
+
+						removeWindowBackground(boardTiles, 64);
+						wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+						wrefresh(boardTiles[previousTile].pWindow);
+					}
+
+					previousTile = selectedTile;
+
+				 // Logic For Pawn Promotion
+
+				 } else if (selectedPromotion != -1) {
+
+					//printw("%p\n", &promotionTiles[selectedPromotion]);
+					//determinePieceSelection(boardTiles, boardTiles[previousTile].pPiece, &chessBoard, promotionTiles, selectedPromotion);
 				
-				} else if (boardTiles[selectedTile].isEmpty == 0) {
-
-						strcpy(pieceColor, boardTiles[selectedTile].pPiece->blackOrWhite);
-						determinePieceColor = strcmp(pieceColor, "White");
-
-						// If the color of the piece is the players then we can precede with the "picking up of the piece."
-						if (determinePieceColor == 0) {
-
-							removeWindowBackground(boardTiles, 64);
-							wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
-							wrefresh(boardTiles[previousTile].pWindow);
-							backgroundColor = COLOR_PAIR(boardTiles[selectedTile].backgroundColor);
-							wbkgd(boardTiles[selectedTile].pWindow, backgroundColor); 
-							wrefresh(boardTiles[selectedTile].pWindow);
-							determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece, &chessBoard, promotionTiles, selectedPromotion);
-							wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
-							wrefresh(boardTiles[selectedTile].pWindow);
-						} else if (determinePieceColor != 0) {
-
-							removeWindowBackground(boardTiles, 64);
-							wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
-							wrefresh(boardTiles[previousTile].pWindow);
-						}
-
-					// If the tile is an empty non-selectable tile then we need to clear the current selection.
-				} else if (boardTiles[selectedTile].isEmpty == 1) {
-
-				  removeWindowBackground(boardTiles, 64);
-			    wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
-			    wrefresh(boardTiles[previousTile].pWindow);
+					// Edge Case: Clicking off the board to remove selected piece UI.
+					
+				} else if (previousTile != -1) {
+						removeWindowBackground(boardTiles, 64);
+						wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
+						wrefresh(boardTiles[previousTile].pWindow);
 				}
+			}	
+		}
 
-				previousTile = selectedTile;
-
-			 // Logic For Pawn Promotion
-
-			 } else if (selectedPromotion != -1) {
-
-				//printw("%p\n", &promotionTiles[selectedPromotion]);
-				printw("%s\n", promotionTiles[0].pPiece->character);
-				printw("%s\n", promotionTiles[1].pPiece->character);
-				printw("%s\n", promotionTiles[2].pPiece->character);
-				printw("%s\n", promotionTiles[3].pPiece->character);
-				determinePieceSelection(boardTiles, boardTiles[previousTile].pPiece, &chessBoard, promotionTiles, selectedPromotion);
-			
-				// Edge Case: Clicking off the board to remove selected piece UI.
-				
-			} else if (previousTile != -1) {
-				  removeWindowBackground(boardTiles, 64);
-			    wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); 
-			    wrefresh(boardTiles[previousTile].pWindow);
-			}
+		else if (ch == ':') {
+	   commands(&commandWindow);
 		}
   }
 

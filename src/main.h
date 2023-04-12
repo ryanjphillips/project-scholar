@@ -4,10 +4,7 @@
 #include <wchar.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#include <assert.h>
 #include <stdio.h>
-#include <time.h>
 
 // Struct Definitions
 #include "./structs/coords/Coords.h"
@@ -18,6 +15,7 @@
 #include "./structs/chessboard/Chessboard.h"
 #include "./structs/piece/Piece.h"
 #include "./structs/player/Player.h"
+#include "./structs/commands/Commands.h"
 
 // Stuct Body
 #include "./structs/dimensions/dimensions.c"
@@ -25,6 +23,7 @@
 #include "./structs/chessboard/chessboard.c"
 #include "./structs/piece/piece.c"
 #include "./structs/player/player.c"
+#include "./structs/commands/commands.c"
 
 
 // Non-library file imports.
