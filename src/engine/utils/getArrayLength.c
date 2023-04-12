@@ -1,5 +1,3 @@
 int getArrayLength() {
-
-
-	return 
+   return
 }

@@ -1,3 +1,2 @@
-void pawnPromotion(struct Tile pTile, struct Chessboard *pChessBoard){
-
+void pawnPromotion(struct Tile pTile, struct Chessboard *pChessBoard) {
 }
