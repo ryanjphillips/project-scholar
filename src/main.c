@@ -1,21 +1,21 @@
 #include "main.h"
-
-int main() { // Variables
-   int    ch;
-   int    selectedTile;
-   int    selectedPromotion;
-   int    previousTile;
-   int    backgroundColor;
-   int    determinePieceColor;
-   char   pieceColor[20];
-   MEVENT event;
+int main() {
+   // Variables
+   int  ch;
+   int  selectedTile;
+   int  selectedPromotion;
+   int  previousTile;
+   int  backgroundColor;
+   int  determinePieceColor;
+   char pieceColor[20];
 
    // Ncurses setup
-   
+
    setlocale(LC_ALL, "");
    initscr();
    cbreak();
-   clear(); raw();
+   clear();
+   raw();
    keypad(stdscr, TRUE);
    mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
    noecho();
@@ -26,6 +26,9 @@ int main() { // Variables
    initColors();
    curs_set(0);
 
+   MEVENT event;
+   PANEL *promotionPanel[4];
+
    struct Dimensions boardDimensions;
    struct Tile       boardTiles[64];
    struct Piece      boardPieces[32];
@@ -35,9 +38,15 @@ int main() { // Variables
    struct Tile       promotionTiles[4];
    struct Commands   commandWindow;
 
+   struct Piece promotionPieces[4] = {
+      { "White Queen",  WHITEQUEEN,  0, 9, "White", "Q", true, 0 },
+      { "White Knight", WHITEKNIGHT, 1, 3, "White", "N", true, 0 },
+      { "White Rook",   WHITEROOK,   2, 5, "White", "R", true, 0 },
+      { "White Bishop", WHITEBISHOP, 3, 3, "White", "B", true, 0 }
+   };
 
    // Starting Board
-   
+
    player(&whitePlayer);
    dimensions(&boardDimensions);
    tile(boardTiles, &boardDimensions);
@@ -46,7 +55,14 @@ int main() { // Variables
    chessboard(&chessBoard, boardTiles);
    addPieceToTile(boardTiles, boardPieces, 32);
    createPromotionWindows(&chessBoard, promotionWindows, boardTiles[0].length);
-   createPromotionTiles(promotionTiles, promotionWindows, 4);
+   createPromotionTiles(promotionTiles, promotionWindows, promotionPieces, 4);
+
+   createPanelArray(promotionTiles, promotionPanel, 4);
+   update_panels();
+   doupdate();
+
+   hidePanelArray(promotionPanel, 4);
+
    // Initialized values
 
    selectedTile      = 0;
@@ -83,12 +99,11 @@ int main() { // Variables
                   // If the color of the piece is the players then we can precede with the "picking up of the piece."
                   if (determinePieceColor == 0) {
                      removeWindowBackground(boardTiles, 64);
-                     wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor));
-                     wrefresh(boardTiles[previousTile].pWindow);
+                     wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); wrefresh(boardTiles[previousTile].pWindow);
                      backgroundColor = COLOR_PAIR(boardTiles[selectedTile].backgroundColor);
                      wbkgd(boardTiles[selectedTile].pWindow, backgroundColor);
                      wrefresh(boardTiles[selectedTile].pWindow);
-                     determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece, &chessBoard, promotionTiles, selectedPromotion);
+                     determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece, &chessBoard, promotionTiles, promotionPanel, selectedPromotion);
                      wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
                      wrefresh(boardTiles[selectedTile].pWindow);
                   }
@@ -110,9 +125,11 @@ int main() { // Variables
 
                // Logic For Pawn Promotion
             }
-            else if (selectedPromotion != -1) {
-               //printw("%p\n", &promotionTiles[selectedPromotion]);
-               //determinePieceSelection(boardTiles, boardTiles[previousTile].pPiece, &chessBoard, promotionTiles, selectedPromotion);
+            else if (selectedPromotion != -1 && boardTiles[previousTile].pPiece->hasPromoted == 0 ) {
+               showPanelArray(promotionPanel, 4);
+               determinePieceSelection(boardTiles, boardTiles[previousTile].pPiece, &chessBoard, promotionTiles, promotionPanel, selectedPromotion);
+               wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor));
+               wrefresh(boardTiles[previousTile].pWindow);
 
                // Edge Case: Clicking off the board to remove selected piece UI.
             }
@@ -127,6 +144,9 @@ int main() { // Variables
       else if (ch == ':') {
          commands(&commandWindow);
          mvwaddch(commandWindow.commandWindow, 0, 0, ch);
+         attron(COLOR_PAIR(COLOR_BLACK));
+         wrefresh(commandWindow.commandWindow);
+         attroff(COLOR_PAIR(COLOR_BLACK));
       }
    }
 

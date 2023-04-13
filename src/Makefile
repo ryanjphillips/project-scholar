@@ -2,10 +2,13 @@ home = /home/ys/Code/project/project-scholar/src
 valgrindFile = valgrind.txt
 
 make:
-	gcc -o main main.c -lmenu -lncursesw -Wextra -Wall -Wfloat-equal
+	gcc -o main main.c -lmenuw -lpanelw -lcdk -lncursesw 
+
+make-good:
+	gcc -o main main.c -lmenuw -lpanelw -lcdk -lncursesw -Wextra -Wall -Wfloat-equal
 
 debug-options:
-	gcc -g3 -o main main.c -lmenu -lncursesw -Wextra -Wall -Wfloat-equal
+	gcc -g3 -o main main.c -lmenuw -lpanelw -lncursesw -lcdk -Wextra -Wall -Wfloat-equal
 
 debug:
 	gdb --annotate=3 main

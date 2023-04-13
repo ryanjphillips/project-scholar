@@ -6,4 +6,5 @@ typedef struct Piece {
 	char *blackOrWhite;
 	char *notation;
 	_Bool hasMoved;
+	int hasPromoted;
 } Piece;

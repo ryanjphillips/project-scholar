@@ -1,5 +1,6 @@
 #define _X_OPEN_SOURCE_EXTENDED
 #include <ncurses.h>
+#include <panel.h>
 #include <locale.h>
 #include <wchar.h>
 #include <string.h>
@@ -33,6 +34,9 @@
 #include "./engine/chessboard/refreshWindowArray.c"
 #include "./engine/chessboard/addPieceToTile.c"
 #include "./engine/chessboard/addPieceToTileSingle.c"
+#include "./engine/chessboard/hidePanelArray.c"
+#include "./engine/chessboard/showPanelArray.c"
+#include "./engine/chessboard/createPanelArray.c"
 #include "./engine/chessboard/determinePieceSelection.c"
 #include "./engine/chessboard/removeWindowBackground.c"
 #include "./engine/chessboard/removePieceFromTile.c"
