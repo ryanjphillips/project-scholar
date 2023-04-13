@@ -4,8 +4,7 @@ void createPromotionTiles(struct Tile *pTile, WINDOW **pWindowArray, int arraySi
    int          windowBegY         = 0;
    int          windowEndX         = 0;
    int          windowEndY         = 0;
-   struct Piece promotionPieces[4] =
-   {
+   struct Piece promotionPieces[4] = {
       { "White Queen",  WHITEQUEEN,  0, 9, "White", "Q", true },
       { "White Knight", WHITEKNIGHT, 1, 3, "White", "N", true },
       { "White Rook",   WHITEROOK,   2, 5, "White", "R", true },

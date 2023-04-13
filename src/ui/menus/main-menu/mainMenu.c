@@ -1,17 +1,15 @@
 #include "mainMenu.h"
-int mainMenu() {
-   const char *choices[] =
-   {
+void mainMenu() {
+   const char *choices[] = {
       "Start",
       "Settings",
       "Test",
       "Exit"
    };
-   ITEM **my_items;
-   int    c;
-   MENU * my_menu;
-   int    n_choices, i;
-   ITEM * cur_item;
+   ITEM **     my_items;
+   int         c;
+   MENU *      my_menu;
+   int         n_choices, i;
 
 
    initscr();
@@ -32,7 +30,7 @@ int mainMenu() {
    refresh();
 
    while ((c = getch()) != KEY_F(1)) {
-      switch (c)                                  {
+      switch (c) {
       case KEY_DOWN:
          menu_driver(my_menu, REQ_DOWN_ITEM);
          break;

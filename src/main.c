@@ -11,6 +11,7 @@ int main() { // Variables
    MEVENT event;
 
    // Ncurses setup
+   
    setlocale(LC_ALL, "");
    initscr();
    cbreak();
@@ -36,6 +37,7 @@ int main() { // Variables
 
 
    // Starting Board
+   
    player(&whitePlayer);
    dimensions(&boardDimensions);
    tile(boardTiles, &boardDimensions);
@@ -43,7 +45,8 @@ int main() { // Variables
    piece(boardPieces);
    chessboard(&chessBoard, boardTiles);
    addPieceToTile(boardTiles, boardPieces, 32);
-
+   createPromotionWindows(&chessBoard, promotionWindows, boardTiles[0].length);
+   createPromotionTiles(promotionTiles, promotionWindows, 4);
    // Initialized values
 
    selectedTile      = 0;
@@ -123,6 +126,7 @@ int main() { // Variables
 
       else if (ch == ':') {
          commands(&commandWindow);
+         mvwaddch(commandWindow.commandWindow, 0, 0, ch);
       }
    }
 

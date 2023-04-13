@@ -1,6 +1,4 @@
 void dimensions(struct Dimensions *pDimensions) {
-   int standardMaxScreenY;
-   int standardMaxScreenX;
    int tileWidth    = 7;
    int tileLength   = 12;
    int boardRows    = 8;

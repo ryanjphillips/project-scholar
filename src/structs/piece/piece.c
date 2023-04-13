@@ -1,7 +1,6 @@
 #include "piece.h"
 void piece(struct Piece *pPiece) {
-   struct Piece pieces[32] =
-   {
+   struct Piece pieces[32] = {
       { "Black Rook",   BLACKROOK,   0,  5, "Black", "R", false },
       { "Black Knight", BLACKKNIGHT, 1,  3, "Black", "N", false },
       { "Black Bishop", BLACKBISHOP, 2,  3, "Black", "B", false },

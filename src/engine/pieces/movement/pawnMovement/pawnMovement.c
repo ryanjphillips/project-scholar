@@ -4,6 +4,9 @@
 void pawnMovement(struct Tile *pTile, struct Piece *pPawn, struct Chessboard *pChessBoard, struct Tile *pPromotionTiles, int determinePromotion) {
    int pawnPosition;
    pawnPosition = pPawn->position;
+   int test;
+   test = pChessBoard->boardLength;
+   printw("%d", test / 2);
 
    // Describes the pawn attacks
    int forwardPawnAttack       = pawnPosition - 8;
