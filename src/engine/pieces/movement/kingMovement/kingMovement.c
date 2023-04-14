@@ -1,4 +1,4 @@
-void kingMovement(struct Tile *pTile, struct Piece *pKing) {
+void kingMovement(struct Tile *pTile, struct Piece *pKing, int selectedTile, int previousTile) {
    int kingPosition;
 
    kingPosition = pKing->position;
@@ -35,10 +35,28 @@ void kingMovement(struct Tile *pTile, struct Piece *pKing) {
       checkForLegalMoves(pTile, kingPosition - 8 + 1);
    }
 
-   //checkForCastle(pTile, pKing, 63);
-   //checkForCastle(pTile, pKing, 56);
+   //Right Castle
 
-   printw("Can 63 Castle: %d\n", checkForCastle(pTile, pKing, 63));
-   printw("Can 56 Castle: %d\n", checkForCastle(pTile, pKing, 56));
+   printw("Selected: %d -- Previous: %d\n", selectedTile, previousTile);
+   if (checkForCastle(pTile, pKing, 63)) {
+      displayLegalMoves(&pTile[62]);
+
+   if (pTile[62].isEmpty == 0) { 
+      addPieceToTileSingle(pTile, 60, 63);
+      removePieceFromTile(&pTile[63]);
+  
+      }
+   }
+
+   // Left Castle
+   if (checkForCastle(pTile, pKing, 56)) {
+      displayLegalMoves(&pTile[58]);
+
+      if (pTile[58].isEmpty == 0) {
+         addPieceToTileSingle(pTile, 59, 56);
+         removePieceFromTile(&pTile[56]);
+      }
+   }
+
    //pTile[kingPosition].pPiece->hasMoved = 1;
 }

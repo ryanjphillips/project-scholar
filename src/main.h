@@ -37,11 +37,11 @@
 #include "./engine/chessboard/hidePanelArray.c"
 #include "./engine/chessboard/showPanelArray.c"
 #include "./engine/chessboard/createPanelArray.c"
-#include "./engine/chessboard/determinePieceSelection.c"
 #include "./engine/chessboard/removeWindowBackground.c"
 #include "./engine/chessboard/removePieceFromTile.c"
 #include "./engine/chessboard/createPromotionWindows.c"
 #include "./engine/chessboard/createPromotionTiles.c"
+#include "./engine/chessboard/determinePieceSelection.c"
 #include "./engine/chessboard/determineSelectedPromotion.c"
 
 

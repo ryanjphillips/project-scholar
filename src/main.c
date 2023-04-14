@@ -14,8 +14,7 @@ int main() {
    setlocale(LC_ALL, "");
    initscr();
    cbreak();
-   clear();
-   raw();
+   clear(); raw();
    keypad(stdscr, TRUE);
    mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
    noecho();
@@ -103,7 +102,7 @@ int main() {
                      backgroundColor = COLOR_PAIR(boardTiles[selectedTile].backgroundColor);
                      wbkgd(boardTiles[selectedTile].pWindow, backgroundColor);
                      wrefresh(boardTiles[selectedTile].pWindow);
-                     determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece, &chessBoard, promotionTiles, promotionPanel, selectedPromotion);
+                     determinePieceSelection(boardTiles, boardTiles[selectedTile].pPiece, &chessBoard, promotionTiles, promotionPanel, selectedPromotion, selectedTile, previousTile);
                      wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
                      wrefresh(boardTiles[selectedTile].pWindow);
                   }
@@ -127,7 +126,7 @@ int main() {
             }
             else if (selectedPromotion != -1 && boardTiles[previousTile].pPiece->hasPromoted == 0) {
                showPanelArray(promotionPanel, 4);
-               determinePieceSelection(boardTiles, boardTiles[previousTile].pPiece, &chessBoard, promotionTiles, promotionPanel, selectedPromotion);
+               determinePieceSelection(boardTiles, boardTiles[previousTile].pPiece, &chessBoard, promotionTiles, promotionPanel, selectedPromotion, 0, 0);
                wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor));
                wrefresh(boardTiles[previousTile].pWindow);
 

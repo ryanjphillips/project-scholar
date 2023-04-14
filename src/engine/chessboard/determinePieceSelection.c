@@ -1,6 +1,6 @@
 #include "../pieces/Movement.h"
 
-void determinePieceSelection(struct Tile *pTile, struct Piece *pPiece, struct Chessboard *pChessBoard, struct Tile *pPromotionTiles, PANEL **pPromotionPanel, int selectedPromotion) {
+void determinePieceSelection(struct Tile *pTile, struct Piece *pPiece, struct Chessboard *pChessBoard, struct Tile *pPromotionTiles, PANEL **pPromotionPanel, int selectedPromotion, int selectedTile, int previousTile) {
    char pieceName[20];
    strcpy(pieceName, pPiece->notation);
 
@@ -26,8 +26,7 @@ void determinePieceSelection(struct Tile *pTile, struct Piece *pPiece, struct Ch
       break;
 
    case 'K':
-      kingMovement(pTile, pPiece);
+      kingMovement(pTile, pPiece, selectedTile, previousTile);
       break;
-   }
-   ;
+   };
 }
