@@ -125,7 +125,7 @@ int main() {
 
                // Logic For Pawn Promotion
             }
-            else if (selectedPromotion != -1 && boardTiles[previousTile].pPiece->hasPromoted == 0 ) {
+            else if (selectedPromotion != -1 && boardTiles[previousTile].pPiece->hasPromoted == 0) {
                showPanelArray(promotionPanel, 4);
                determinePieceSelection(boardTiles, boardTiles[previousTile].pPiece, &chessBoard, promotionTiles, promotionPanel, selectedPromotion);
                wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor));

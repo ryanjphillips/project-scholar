@@ -1,3 +1,4 @@
+#include "./movement/kingMovement/checkForCastle.c"
 #include "./movementChecks/checkIfPieceIsWhite.c"
 #include "./movementChecks/displayLegalMoves.c"
 #include "./movementChecks/checkForLegalMoves.c"
