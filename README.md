@@ -22,7 +22,7 @@
 ## Building and Compiling
 To build and compile, simply run in the src/ folder:
 * ```make```
-* ```./make```
+* ```./main```
 
 ## To Do/Finish:
 Project Scholar is a work in progress and yet to finish features for the following:
