@@ -4,8 +4,11 @@
 </p>
 
 ## Prerequisites
-* Linux (Only tested on Linux Mint 21.1 Vera)
-* C Compiler (Only tested with gcc)
+* Linux 
+  * Developed and Tested on Linux Mint 21.1 Vera
+* C Compiler  
+  * Only tested with gcc
+* GNU Make 
 * Ncurses: 
 	* libncurses6
  	* libncurses-dev
