@@ -37,7 +37,6 @@ void kingMovement(struct Tile *pTile, struct Piece *pKing, int selectedTile, int
 
    //Right Castle
 
-   printw("Selected: %d -- Previous: %d\n", selectedTile, previousTile);
    if (checkForCastle(pTile, pKing, 63)) {
       displayLegalMoves(&pTile[62]);
 
@@ -57,6 +56,4 @@ void kingMovement(struct Tile *pTile, struct Piece *pKing, int selectedTile, int
          removePieceFromTile(&pTile[56]);
       }
    }
-
-   //pTile[kingPosition].pPiece->hasMoved = 1;
 }

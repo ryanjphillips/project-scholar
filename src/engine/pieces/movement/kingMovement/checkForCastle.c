@@ -34,7 +34,6 @@ int checkForCastle(struct Tile *pTile, struct Piece *pPiece, int rookPosition) {
    // Check 4 - Check if there are pieces between the King and the Rook.
    if (rookPosition > kingPosition) {
       for (counter = kingPosition + 1; counter < rookPosition; counter++) {
-         //printw("Right: %d\n", counter);
          if (pTile[counter].isEmpty == 0) {
             return(0);
          }
@@ -42,7 +41,6 @@ int checkForCastle(struct Tile *pTile, struct Piece *pPiece, int rookPosition) {
    }
    else {
       for (counter = kingPosition - 1; counter > rookPosition; counter--) {
-         //printw("Left: %d\n", counter);
          if (pTile[counter].isEmpty == 0) {
             return(0);
          }
