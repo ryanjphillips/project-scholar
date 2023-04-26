@@ -1,5 +1,7 @@
 ## Project Scholar - TUI Ncurses Chess Engine Written in C
-![til](https://raw.githubusercontent.com/ryanjphillips/project-scholar/master/media/scholar.gif)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ryanjphillips/project-scholar/master/media/scholar.gif" alt="animated" />
+</p>
 
 ## Prerequisites
 * Linux (Only tested on Linux Mint 21.1 Vera)
@@ -11,13 +13,13 @@
 	* libncrusesw6
 
 ## Installation
-*```git clone https://github.com/ryanjphillips/project-scholar.git```
-*```cd src/```
+* ```git clone https://github.com/ryanjphillips/project-scholar.git```
+* ```cd src/```
 
 ## Building and Compiling
 To build and compile, simply run in the src/ folder:
-*``` make ```
-*``` ./make ```
+* ```make```
+* ```./make```
 
 ## To Do/Finish:
 Project Scholar is a work in progress and yet to finish features for the following:
