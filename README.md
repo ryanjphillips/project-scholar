@@ -1,6 +1,6 @@
 ## Project Scholar - TUI Ncurses Chess Engine Written in C
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ryanjphillips/project-scholar/master/media/scholar.gif" alt="animated" />
+  <img src="https://raw.githubusercontent.com/ryanjphillips/project-scholar/master/media/scholar.gif" alt="animated" width=50% height=50%/>
 </p>
 
 ## Prerequisites
