@@ -15,9 +15,4 @@ void dimensions(struct Dimensions *pDimensions) {
    pDimensions->columns = boardColumns;
    pDimensions->boardStartingPosition.yCoord = (pDimensions->standardMaxScreenY / 2) - (pDimensions->boardWidth / 2);
    pDimensions->boardStartingPosition.xCoord = boardStartingX;
-
-   /*
-   pDimensions->boardStartingPosition.yCoord = (pDimensions->standardMaxScreenY / 2) - (pDimensions->boardWidth / 2);
-   pDimensions->boardStartingPosition.xCoord = (pDimensions->standardMaxScreenX / 2) - (pDimensions->boardLength / 2); 
-   */
 }

@@ -17,4 +17,9 @@ void chessboard(struct Chessboard *pChessBoard, struct Tile *pTiles) {
    pChessBoard->boardTopRight.xCoord = pTiles[7].beginningX + pTiles[0].length;
    pChessBoard->boardBottomLeft.yCoord = pTiles[56].beginningY + pTiles[0].width;
    pChessBoard->boardBottomLeft.xCoord = pTiles[56].beginningX;
+
+   // Draw Chessboard Letters and Numbers
+   drawBoardLetters(pChessBoard->boardBottomLeft, pTiles->length, pChessBoard->boardColumns);
+   drawBoardNumbers(pChessBoard->boardBeginning, pTiles->width, pChessBoard->boardRows);
+
 }
