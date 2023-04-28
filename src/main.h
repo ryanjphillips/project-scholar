@@ -9,6 +9,7 @@
 
 // Struct Definitions
 #include "./structs/coords/Coords.h"
+#include "./structs/matchHistory/MatchHistory.h"
 #include "./structs/turnSummary/TurnSummary.h"
 #include "./structs/gameState/GameState.h"
 #include "./structs/dimensions/Dimensions.h"
@@ -22,6 +23,7 @@
 #include "./structs/dimensions/dimensions.c"
 #include "./structs/tile/tile.c"
 #include "./structs/chessboard/chessboard.c"
+#include "./structs/matchHistory/matchHistory.c"
 #include "./structs/piece/piece.c"
 #include "./structs/player/player.c"
 #include "./structs/commands/commands.c"

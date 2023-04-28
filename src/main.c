@@ -28,14 +28,15 @@ int main() {
    MEVENT event;
    PANEL *promotionPanel[4];
 
-   struct Dimensions boardDimensions;
-   struct Tile       boardTiles[64];
-   struct Piece      boardPieces[32];
-   struct Chessboard chessBoard;
-   struct Player     whitePlayer;
-   WINDOW *          promotionWindows[4];
-   struct Tile       promotionTiles[4];
-   struct Commands   commandWindow;
+   struct Dimensions   boardDimensions;
+   struct Tile         boardTiles[64];
+   struct Piece        boardPieces[32];
+   struct Chessboard   chessBoard;
+   struct Player       whitePlayer;
+   WINDOW *            promotionWindows[4];
+   struct Tile         promotionTiles[4];
+   struct Commands     commandWindow;
+   struct MatchHistory boardMatchHistory;
 
    struct Piece promotionPieces[4] = {
       { "White Queen",  WHITEQUEEN,  0, 9, "White", "Q", true, 0 },
@@ -55,6 +56,7 @@ int main() {
    addPieceToTile(boardTiles, boardPieces, 32);
    createPromotionWindows(&chessBoard, promotionWindows, boardTiles[0].length);
    createPromotionTiles(promotionTiles, promotionWindows, promotionPieces, 4);
+   matchHistory(&boardMatchHistory, &boardDimensions);
 
    // Creation of the Promotion Panel
 
@@ -73,7 +75,6 @@ int main() {
    while ((ch = getch()) != 'q') {
       if (ch == KEY_MOUSE) {
          if (getmouse(&event) == OK) {
-
             selectedTile      = determineSelectedTile(boardTiles, event.y, event.x);
             selectedPromotion = determineSelectedPromotion(promotionTiles, event.y, event.x);
 

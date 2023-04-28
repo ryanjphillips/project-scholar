@@ -40,10 +40,9 @@ void kingMovement(struct Tile *pTile, struct Piece *pKing, int selectedTile, int
    if (checkForCastle(pTile, pKing, 63)) {
       displayLegalMoves(&pTile[62]);
 
-   if (pTile[62].isEmpty == 0) { 
-      addPieceToTileSingle(pTile, 60, 63);
-      removePieceFromTile(&pTile[63]);
-  
+      if (pTile[62].isEmpty == 0) {
+         addPieceToTileSingle(pTile, 60, 63);
+         removePieceFromTile(&pTile[63]);
       }
    }
 

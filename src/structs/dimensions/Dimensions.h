@@ -8,5 +8,6 @@ typedef struct Dimensions {
 	int rows;
 	int columns;
 	Coords boardStartingPosition;
+	Coords boardHistoryStartingPosition;
 
 } Dimensions;

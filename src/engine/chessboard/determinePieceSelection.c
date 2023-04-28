@@ -28,5 +28,6 @@ void determinePieceSelection(struct Tile *pTile, struct Piece *pPiece, struct Ch
    case 'K':
       kingMovement(pTile, pPiece, selectedTile, previousTile);
       break;
-   };
+   }
+   ;
 }

@@ -11,7 +11,6 @@ void tile(struct Tile *pTile, struct Dimensions *pDimensions) {
 
    for (row = 0; row < pDimensions->rows; row++) {
       for (column = 0; column < pDimensions->columns; column++) {
-
          // Calculating the starting X and Y Pos for each tile. This is based off the middle of the current window.
 
          tileYPos = pDimensions->boardStartingPosition.yCoord + (pDimensions->tileWidth * row);
