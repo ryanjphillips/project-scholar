@@ -3,6 +3,7 @@ void dimensions(struct Dimensions *pDimensions) {
    int tileLength   = 12;
    int boardRows    = 8;
    int boardColumns = 8;
+   int boardStartingX = 20;
 
    pDimensions->standardMaxScreenY = LINES;
    pDimensions->standardMaxScreenX = COLS;
@@ -12,4 +13,11 @@ void dimensions(struct Dimensions *pDimensions) {
    pDimensions->boardLength        = tileLength * boardColumns;
    pDimensions->rows    = boardRows;
    pDimensions->columns = boardColumns;
+   pDimensions->boardStartingPosition.yCoord = (pDimensions->standardMaxScreenY / 2) - (pDimensions->boardWidth / 2);
+   pDimensions->boardStartingPosition.xCoord = boardStartingX;
+
+   /*
+   pDimensions->boardStartingPosition.yCoord = (pDimensions->standardMaxScreenY / 2) - (pDimensions->boardWidth / 2);
+   pDimensions->boardStartingPosition.xCoord = (pDimensions->standardMaxScreenX / 2) - (pDimensions->boardLength / 2); 
+   */
 }

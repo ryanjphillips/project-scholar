@@ -56,10 +56,9 @@ int main() {
    createPromotionWindows(&chessBoard, promotionWindows, boardTiles[0].length);
    createPromotionTiles(promotionTiles, promotionWindows, promotionPieces, 4);
 
-   createPanelArray(promotionTiles, promotionPanel, 4);
-   update_panels();
-   doupdate();
+   // Creation of the Promotion Panel
 
+   createPanelArray(promotionTiles, promotionPanel, 4);
    hidePanelArray(promotionPanel, 4);
 
    // Initialized values
@@ -74,6 +73,7 @@ int main() {
    while ((ch = getch()) != 'q') {
       if (ch == KEY_MOUSE) {
          if (getmouse(&event) == OK) {
+
             selectedTile      = determineSelectedTile(boardTiles, event.y, event.x);
             selectedPromotion = determineSelectedPromotion(promotionTiles, event.y, event.x);
 

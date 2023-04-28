@@ -11,10 +11,11 @@ void tile(struct Tile *pTile, struct Dimensions *pDimensions) {
 
    for (row = 0; row < pDimensions->rows; row++) {
       for (column = 0; column < pDimensions->columns; column++) {
+
          // Calculating the starting X and Y Pos for each tile. This is based off the middle of the current window.
 
-         tileYPos = (pDimensions->standardMaxScreenY / 2) - (pDimensions->boardWidth / 2) + (pDimensions->tileWidth * row);
-         tileXPos = (pDimensions->standardMaxScreenX / 2) - (pDimensions->boardLength / 2) + (pDimensions->tileLength * column);
+         tileYPos = pDimensions->boardStartingPosition.yCoord + (pDimensions->tileWidth * row);
+         tileXPos = pDimensions->boardStartingPosition.xCoord + (pDimensions->tileLength * column);
 
          // Create Window takes in HEIGHT and Length, which height will equal width, in my case.
          pTile[tileCounter].pWindow         = createTileWindow(pDimensions->tileWidth, pDimensions->tileLength, tileYPos, tileXPos, windowBorders);

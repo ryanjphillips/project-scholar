@@ -7,5 +7,6 @@ typedef struct Dimensions {
 	int boardLength;
 	int rows;
 	int columns;
+	Coords boardStartingPosition;
 
 } Dimensions;
