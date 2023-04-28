@@ -22,6 +22,8 @@
 // Stuct Body
 #include "./structs/dimensions/dimensions.c"
 #include "./structs/tile/tile.c"
+#include "./structs/gameState/gameState.c"
+#include "./structs/turnSummary/turnSummary.c"
 #include "./structs/chessboard/chessboard.c"
 #include "./structs/matchHistory/matchHistory.c"
 #include "./structs/piece/piece.c"
@@ -46,6 +48,7 @@
 #include "./engine/chessboard/createPromotionTiles.c"
 #include "./engine/chessboard/determinePieceSelection.c"
 #include "./engine/chessboard/determineSelectedPromotion.c"
+#include "./engine/chessboard/recordMove.c"
 
 
 // Color Definitions

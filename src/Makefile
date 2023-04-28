@@ -4,7 +4,7 @@ valgrindFile = valgrind.txt
 make:
 	gcc -o main main.c -lmenuw -lpanelw -lcdk -lncursesw 
 
-make-good:
+good:
 	gcc -o main main.c -lmenuw -lpanelw -lcdk -lncursesw -Wextra -Wall -Wfloat-equal
 
 debug-options:

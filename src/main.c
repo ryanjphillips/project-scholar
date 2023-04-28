@@ -5,8 +5,7 @@ int main() {
    int  selectedTile;
    int  selectedPromotion;
    int  previousTile;
-   int  backgroundColor;
-   int  determinePieceColor;
+   int  backgroundColor; int  determinePieceColor;
    char pieceColor[20];
 
    // Ncurses setup
@@ -33,9 +32,12 @@ int main() {
    struct Piece        boardPieces[32];
    struct Chessboard   chessBoard;
    struct Player       whitePlayer;
+   struct Player       blackPlayer;
    WINDOW *            promotionWindows[4];
    struct Tile         promotionTiles[4];
    struct Commands     commandWindow;
+   struct TurnSummary boardTurnSummary;
+   struct GameState boardGameState;
    struct MatchHistory boardMatchHistory;
 
    struct Piece promotionPieces[4] = {
@@ -45,9 +47,10 @@ int main() {
       { "White Bishop", WHITEBISHOP, 3, 3, "White", "B", true, 0 }
    };
 
-   // Starting Board
+   // Starting Board and UI
 
    player(&whitePlayer);
+   player(&blackPlayer);
    dimensions(&boardDimensions);
    tile(boardTiles, &boardDimensions);
    refreshWindowArray(boardTiles);
@@ -56,6 +59,8 @@ int main() {
    addPieceToTile(boardTiles, boardPieces, 32);
    createPromotionWindows(&chessBoard, promotionWindows, boardTiles[0].length);
    createPromotionTiles(promotionTiles, promotionWindows, promotionPieces, 4);
+   turnSummary(&boardTurnSummary);
+   gameState(&boardGameState, &whitePlayer, &blackPlayer, &boardTurnSummary);
    matchHistory(&boardMatchHistory, &boardDimensions);
 
    // Creation of the Promotion Panel
@@ -86,6 +91,10 @@ int main() {
                if (boardTiles[selectedTile].isSelected == true) {
                   addPieceToTileSingle(boardTiles, selectedTile, previousTile);
                   removePieceFromTile(&boardTiles[previousTile]);
+                  boardGameState.turnNumber += 1;
+                  recordMove(&boardTurnSummary, &boardGameState, boardTiles, selectedTile, previousTile);
+                  mvwaddstr(boardMatchHistory.pWindow, boardGameState.turnNumber, 0, boardTurnSummary.whitesTurn[2]);
+                  wrefresh(boardMatchHistory.pWindow);
                   clearBoardSelection(boardTiles, previousTile);
 
                   // If not a mouse click to make an already selected piece, then determine if the tile has a valid piece.
@@ -105,7 +114,6 @@ int main() {
                      wrefresh(boardTiles[selectedTile].pWindow);
                   }
 
-                  //
                   else if (determinePieceColor != 0) {
                      clearBoardSelection(boardTiles, previousTile);
                   }

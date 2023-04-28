@@ -1,4 +1,4 @@
 typedef struct TurnSummary {
-	char *whitesTurn;
-	char *blacksTurn;
+	char *whitesTurn[500];
+	char *blacksTurn[500];
 } TurnSummary;
