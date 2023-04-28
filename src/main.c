@@ -81,14 +81,12 @@ int main() {
             // First Determine if the move is an legal square on the board.
 
             if (selectedTile != -1) {
-               // Second determine if the mouse click is to make a move with an already selected piece.
+               // Second determine if the mouse click is to make a move with an already selected piece. Move piece.
 
                if (boardTiles[selectedTile].isSelected == true) {
                   addPieceToTileSingle(boardTiles, selectedTile, previousTile);
                   removePieceFromTile(&boardTiles[previousTile]);
-                  removeWindowBackground(boardTiles, 64);
-                  wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor));
-                  wrefresh(boardTiles[previousTile].pWindow);
+                  clearBoardSelection(boardTiles, previousTile);
 
                   // If not a mouse click to make an already selected piece, then determine if the tile has a valid piece.
                }
@@ -98,8 +96,7 @@ int main() {
 
                   // If the color of the piece is the players then we can precede with the "picking up of the piece."
                   if (determinePieceColor == 0) {
-                     removeWindowBackground(boardTiles, 64);
-                     wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor)); wrefresh(boardTiles[previousTile].pWindow);
+                     clearBoardSelection(boardTiles, previousTile);
                      backgroundColor = COLOR_PAIR(boardTiles[selectedTile].backgroundColor);
                      wbkgd(boardTiles[selectedTile].pWindow, backgroundColor);
                      wrefresh(boardTiles[selectedTile].pWindow);
@@ -107,18 +104,16 @@ int main() {
                      wbkgd(boardTiles[selectedTile].pWindow, COLOR_PAIR(TILE_SELECTED));
                      wrefresh(boardTiles[selectedTile].pWindow);
                   }
+
+                  //
                   else if (determinePieceColor != 0) {
-                     removeWindowBackground(boardTiles, 64);
-                     wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor));
-                     wrefresh(boardTiles[previousTile].pWindow);
+                     clearBoardSelection(boardTiles, previousTile);
                   }
 
                   // If the tile is an empty non-selectable tile then we need to clear the current selection.
                }
                else if (boardTiles[selectedTile].isEmpty == 1) {
-                  removeWindowBackground(boardTiles, 64);
-                  wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor));
-                  wrefresh(boardTiles[previousTile].pWindow);
+                  clearBoardSelection(boardTiles, previousTile);
                }
 
                previousTile = selectedTile;
@@ -128,15 +123,12 @@ int main() {
             else if (selectedPromotion != -1 && boardTiles[previousTile].pPiece->hasPromoted == 0) {
                showPanelArray(promotionPanel, 4);
                determinePieceSelection(boardTiles, boardTiles[previousTile].pPiece, &chessBoard, promotionTiles, promotionPanel, selectedPromotion, 0, 0);
-               wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor));
-               wrefresh(boardTiles[previousTile].pWindow);
+               clearBoardSelection(boardTiles, previousTile);
 
                // Edge Case: Clicking off the board to remove selected piece UI.
             }
             else if (previousTile != -1) {
-               removeWindowBackground(boardTiles, 64);
-               wbkgd(boardTiles[previousTile].pWindow, COLOR_PAIR(boardTiles[previousTile].backgroundColor));
-               wrefresh(boardTiles[previousTile].pWindow);
+               clearBoardSelection(boardTiles, previousTile);
             }
          }
       }
