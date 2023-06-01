@@ -1,21 +1,21 @@
 home = /home/ys/Code/project/project-scholar/src
 valgrindFile = valgrind.txt
+file = main
+CC = gcc
+flags =  -lmenuw -lpanelw -lcdk -lncursesw -Wextra -Wall -Wfloat-equal
 
 make:
-	gcc -o main main.c -lmenuw -lpanelw -lcdk -lncursesw 
-
-good:
-	gcc -o main main.c -lmenuw -lpanelw -lcdk -lncursesw -Wextra -Wall -Wfloat-equal
+	$(CC) -o $(file) $(file).c $(flags) 
 
 debug-options:
-	gcc -g3 -o main main.c -lmenuw -lpanelw -lncursesw -lcdk -Wextra -Wall -Wfloat-equal
+	$(CC) -g3 -o $(file) $(file).c $(flags) 
 
 debug:
-	gdb --annotate=3 main
+	gdb --annotate=3 $(file)
 
 valgrind:
 	make debug-options
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=${valgrindFile} main
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=${valgrindFile} $(file)
 
 uncrustify:
 	find $(home) -type f -name '*.c' -exec uncrustify --no-backup -l=C {} + 

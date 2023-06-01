@@ -5,7 +5,7 @@ int main() {
    int  selectedTile;
    int  selectedPromotion;
    int  previousTile;
-   int  backgroundColor; int  determinePieceColor;
+   int  backgroundColor; int determinePieceColor;
    char pieceColor[20];
 
    // Ncurses setup
@@ -36,8 +36,8 @@ int main() {
    WINDOW *            promotionWindows[4];
    struct Tile         promotionTiles[4];
    struct Commands     commandWindow;
-   struct TurnSummary boardTurnSummary;
-   struct GameState boardGameState;
+   struct TurnSummary  boardTurnSummary;
+   struct GameState    boardGameState;
    struct MatchHistory boardMatchHistory;
 
    struct Piece promotionPieces[4] = {
